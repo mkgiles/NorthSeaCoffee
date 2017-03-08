@@ -1,6 +1,6 @@
 
 public class Seasoncard {
 
-	//Different seasons.
+	//To be subclass in the card class for season cards.
 	
 }

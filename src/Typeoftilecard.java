@@ -1,6 +1,6 @@
 
 public class Typeoftilecard {
 
-	//Different depths/oil yields.
+	//To be subclass in the card class for type of tile cards.
 	
 }

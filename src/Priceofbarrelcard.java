@@ -1,6 +1,5 @@
 
 public class Priceofbarrelcard {
 
-	//Price per barrel
-	
+	//To be subclass in the card class for price of barrel cards.	
 }
