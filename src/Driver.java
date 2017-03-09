@@ -1,7 +1,4 @@
-import java.util.Scanner;
-
 public class Driver {
-	Scanner input = new Scanner(System.in);
 
 	
 	public static void main(String[] args) {
@@ -11,9 +8,6 @@ public class Driver {
 		Map map = new Map();
 		Player player = new Player();
 
-
-		
-		driver.gameMenu();
 		driver.runGameMenu();
 		
 		}
@@ -23,14 +17,8 @@ public class Driver {
 	public int gameMenu()
 	{
 		 System.out.println("Welcome to North Sea Oil");
-		 System.out.println("How many players would you like to play with? (2-6)");
-		 System.out.println("1) 2 Players");
-		 System.out.println("2) 3 Players");
-		 System.out.println("3) 4 Players");
-		 System.out.println("4) 5 Players");
-		 System.out.println("5) 6 Players");
-	        int option = input.nextInt();
-	        return option;
+		 int option=IO.getInt("How many players would you like to play with? (2-6)");
+	     return option;
 	}
 
     private void runGameMenu()
@@ -60,8 +48,7 @@ public class Driver {
                           break;
             }
             System.out.println("\nPress any key to continue...");
-            input.nextLine();
-            input.nextLine(); 
+            IO.getLine();
             
             option = gameMenu();
         }

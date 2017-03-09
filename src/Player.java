@@ -1,21 +1,17 @@
-import java.util.Scanner;
+import java.util.ArrayList;
 
 public class Player {
 	
-	//All this set to change depending on player storage method. Potential placeholder so far.
-	//private String playerName;
-	//private int ownershipTokens = 7;
-	private static String playerList[];
-	
-	
+	private static ArrayList<String> playerList;
 	public static void addPlayers(int playerAmount)
 	{
-		
+		playerList = new ArrayList<String>();
 		for(int i = 0; i < playerAmount; i++ )
 		{
-			Scanner input = new Scanner(System.in);
-			playerList[i] = input.nextLine();
-			//Gives an error so far. Need to figure it out but hopefully is a good basis to work from.
+			playerList.add(IO.getLine());
+		}
+		for(int i=0; i<playerList.size();i++){
+			System.out.println(playerList.get(i));
 		}
 	}
 	
