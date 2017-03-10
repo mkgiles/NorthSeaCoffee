@@ -25,30 +25,16 @@ public class Driver {
         int option = gameMenu();
         while (option != -1)
         {
-           
-            switch (option)
-            {
-               case 2:    IO.putLine("2 Players");
-               			  Player.addPlayers(2);
-            	          break;
-               case 3:    IO.putLine("3 Players");
-               			  Player.addPlayers(3);
-                          break;
-               case 4:    IO.putLine("4 Players");
-               			  Player.addPlayers(4);
-               			  break;
-               case 5:    IO.putLine("5 Players");
-               			  Player.addPlayers(5);
-               			  break;
-               case 6:    IO.putLine("6 Players");
-                          Player.addPlayers(6);
-               			  break;
-              default:    IO.putLine("Invalid option entered: " + option);
-                          break;
-            }
-            IO.prompt("Press any key to continue...");
+           if(option > 1 && option <= 6){
+        	   IO.putLine(option + " players");
+        	   Player.addPlayers(option);
+           }
+           else{
+        	   IO.putLine("Invalid option entered: " + option);     
+           }
+           IO.prompt("Press any key to continue...");
             
-            option = gameMenu();
+           option = gameMenu();
         }
     }
 	
