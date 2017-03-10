@@ -6,12 +6,16 @@ public class Player {
 	public static void addPlayers(int playerAmount)
 	{
 		playerList = new ArrayList<String>();
-		for(int i = 0; i < playerAmount; i++ )
+		for(int i = 0; i < playerAmount;)
 		{
-			playerList.add(IO.getLine());
+			//Putting increments in IO to maintain correct mapping in player number and index number. 
+			playerList.add(IO.getLine("Enter Name of Player " + ++i + ": "));
 		}
-		for(int i=0; i<playerList.size();i++){
-			System.out.println(playerList.get(i));
+		for(int i=0; i<playerList.size(); i++){
+			//increment gets player number.
+			IO.putLine("Player " + ++i + ": ");
+			//decrement gets index number.
+			IO.putLine(playerList.get(--i));
 		}
 	}
 	
