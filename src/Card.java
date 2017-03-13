@@ -8,4 +8,10 @@ class Card {
 		this.title = title;
 		this.value = value;
 	}
+	
+	//used to control phase 3
+	public static void activityPhase() {
+		System.out.print("activityPhase");
+		
+	}
 }

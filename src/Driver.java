@@ -1,5 +1,7 @@
 public class Driver {
 
+	//Will be used to control the for loop as a victory will stop the loop from continuing
+	int victoryState = 1;
 	
 	public static void main(String[] args) {
 		Driver driver = new Driver();
@@ -35,8 +37,17 @@ public class Driver {
            IO.prompt("Press any key to continue...");
             
            option = gameMenu();
+           gameRunning();
         }
+        
     }
-	
-
+    
+    
+    //Running state for game, foundation. Tried to test with prints but not working just yet. Will pick up to continue.
+    private void gameRunning()
+    {
+    Bank.borrowPhase();	
+    Drill.drillPhase();
+    Card.activityPhase();
+    }
 }
