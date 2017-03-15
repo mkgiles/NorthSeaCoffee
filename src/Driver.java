@@ -8,22 +8,21 @@ public class Driver {
 		Bank bank = new Bank();
 		Map map = new Map();
 		Player player = new Player();
-		int victoryState = 0;
-		int startingState = 1;
+		Boolean victoryState = false;
 
 
         driver.runGameMenu();
         
         //Running state for game. Only displays text so far and has prompts to ensure it doesn't create an infinite, Eclipse-crashing death loop
         //Need to work on a way to escape runGameMenu to get to the while loop.
-		while(victoryState !=1)
+		while(victoryState != true)
         {
         	Driver.phaseOne();
-        	IO.prompt("Press any key to continue...");
+        	IO.prompt("Press any key to continue to phase two.");
         	Driver.phaseTwo();
-        	IO.prompt("Press any key to continue...");
+        	IO.prompt("Press any key to continue to phase three.");
         	Driver.phaseThree();
-        	IO.prompt("Press any key to continue...");
+        	IO.prompt("Press any key to start the next turn.");
         }
 		
 	}
@@ -49,10 +48,20 @@ public class Driver {
         	   IO.putLine("Invalid option entered: " + option);     
            }
            IO.prompt("Press any key to continue...");
-            
+           
            option = gameMenu();
+           
+           //Break allows the loop to end yet it will render the loop susceptible to inputs of less than 2. It is unsuitable unless an alternative method is found.
+           
+           //break;
+           
+           //Potential text to inform the player the amount of players before starting. Has the same problem as Break does.
+           
+           //IO.putLine("Starting game with " + option + " players. Have fun!");
+           //IO.prompt("Press any key to continue...");
+           
         }
-         
+        
     }
     
     
@@ -60,6 +69,7 @@ public class Driver {
     private static void phaseOne()
     {
     	Bank.borrowPhase();
+    	//Bank.bankPayment();
     }
     private static void phaseTwo()
     {
@@ -68,5 +78,6 @@ public class Driver {
     private static void phaseThree()
     {
     	Card.activityPhase();
+    	//Bank.bankPayment();
     }
 }

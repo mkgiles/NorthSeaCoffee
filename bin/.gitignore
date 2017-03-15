@@ -1,7 +1,13 @@
-/Card.class
+/Bank.class
 /BarrelCard.class
-/PartyCard.class
-/SeasonCard.class
-/WaterCard.class
+/Card.class
 /Deck.class
+/Drill.class
+/Driver.class
 /IO.class
+/Map.class
+/PartyCard.class
+/Player.class
+/SeasonCard.class
+/Tile.class
+/WaterCard.class

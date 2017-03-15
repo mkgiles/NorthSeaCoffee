@@ -5,5 +5,5 @@ public class SeasonCard extends Card{
 	SeasonCard(String title, int value){
 		super(title, value);
 	}
-	
+		
 }

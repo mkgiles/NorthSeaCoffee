@@ -1,7 +1,6 @@
 import java.util.ArrayList;
 
 public class Player {
-	
 	private static ArrayList<String> playerList;
 	public static void addPlayers(int playerAmount)
 	{
@@ -17,6 +16,5 @@ public class Player {
 			//decrement gets index number.
 			IO.putLine(playerList.get(--i));
 		}
-	}
-	
+	}	
 }
