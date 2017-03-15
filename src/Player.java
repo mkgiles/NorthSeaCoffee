@@ -16,5 +16,11 @@ public class Player {
 			//decrement gets index number.
 			IO.putLine(playerList.get(--i));
 		}
-	}	
+	}
+	public double getDebt(){
+		return 0.0;
+	}
+	public void payDebt(double payment){
+		
+	}
 }

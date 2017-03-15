@@ -19,13 +19,13 @@ public class Bank {
 	
 	//Potential method to use in the first and third phases of the game to pay off player debt. If not, concept should
 	//hopefully inspire better method. Need to have a way of managing individual player debt as well as inventory.
-	public static void bankPayment()
+	public static void bankPayment(Player player)
 	{	
 		 int payment=IO.getInt("How much do you wish to pay your bank?");
 		 {
-			 if(payment < player.getDebt)
+			 if(payment < player.getDebt())
 			 {
-				 player.paydebt(player.getDebt-payment);
+				 player.payDebt(player.getDebt()-payment);
 			 }
 			 else 
 			 {
