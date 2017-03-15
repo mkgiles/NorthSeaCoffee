@@ -15,7 +15,6 @@ public class Driver {
         driver.runGameMenu();
         
         //Running state for game. Only displays text so far and has prompts to ensure it doesn't create an infinite, Eclipse-crashing death loop
-        //Need to work on a way to escape runGameMenu to get to the while loop.
 		while(victoryState !=1)
         {
         	Driver.phaseOne();
@@ -39,19 +38,14 @@ public class Driver {
     private void runGameMenu()
     {
         int option = gameMenu();
-        while (option != -1)
-        {
-           if(option > 1 && option <= 6){
-        	   IO.putLine(option + " players");
-        	   Player.addPlayers(option);
-           }
-           else{
-        	   IO.putLine("Invalid option entered: " + option);     
-           }
-           IO.prompt("Press any key to continue...");
-            
-           option = gameMenu();
-        }
+       if(option > 1 && option <= 6){
+    	   IO.putLine(option + " players");
+    	   Player.addPlayers(option);
+       }
+       else{
+    	   IO.putLine("Invalid option entered: " + option);     
+       }
+       IO.prompt("Press any key to continue...");
          
     }
     
