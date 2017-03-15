@@ -6,7 +6,7 @@ public class Deck {
 	//use ISAAC for random number generation.
 	private Rand rand;
 	Deck(){
-		deck = new ArrayList<Card>(52);
+		deck = new ArrayList<Card>();
 		rand = new Rand();
 	}
 	public Card read(){
@@ -17,9 +17,9 @@ public class Deck {
 	}
 	//Knuth Shuffle courtesy of Rosetta Code.
 	public void shuffle() {
-	    int n = deck.size();
-	    while (n > 1) {
-	        int k = rand.val()%52; //decrements after using the value
+	    int n = deck.size()-1;
+	    while (n > 0) {
+	        int k = rand.val()%n--; //decrements after using the value
 	        Card temp = deck.get(n);
 	        deck.add(n,deck.get(k));
 	        deck.add(k,temp);
