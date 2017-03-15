@@ -1,30 +1,28 @@
-import java.util.ArrayDeque;
-import java.util.List;
-import java.util.Random;
+import java.util.ArrayList;
 
 public class Deck {
 	//Class for the storage of cards in a deck.
-	private ArrayDeque<Card> deck;
+	private ArrayList<Card> deck;
+	//use ISAAC for random number generation.
 	private Rand rand;
-	public static final Random gen = new Random();
 	Deck(){
-		deck = new ArrayDeque<Card>();
+		deck = new ArrayList<Card>(52);
 		rand = new Rand();
 	}
 	public Card read(){
-		return deck.pop();
+		return deck.remove(0);
 	}
 	public void replace(Card card){
-		deck.push(card);
+		deck.add(card);
 	}
+	//Knuth Shuffle courtesy of Rosetta Code.
 	public void shuffle() {
-		Object[] array = deck.toArray();
-	    int n = array.length;
+	    int n = deck.size();
 	    while (n > 1) {
-	        int k = gen.nextInt(n--); //decrements after using the value
-	        Object temp = array[n];
-	        array[n] = array[k];
-	        array[k] = temp;
+	        int k = rand.val()%52; //decrements after using the value
+	        Card temp = deck.get(n);
+	        deck.add(n,deck.get(k));
+	        deck.add(k,temp);
 	    }
 	}
 }
