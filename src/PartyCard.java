@@ -5,4 +5,6 @@ public class PartyCard extends Card {
 	PartyCard(String title, int value){
 		super(title, value);
 	}
+	
+	
 }

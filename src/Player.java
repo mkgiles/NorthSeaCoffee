@@ -1,7 +1,6 @@
 import java.util.ArrayList;
 
 public class Player {
-	
 	private static ArrayList<String> playerList;
 	public static void addPlayers(int playerAmount)
 	{
@@ -18,5 +17,10 @@ public class Player {
 			IO.putLine(playerList.get(--i));
 		}
 	}
-	
+	public double getDebt(){
+		return 0.0;
+	}
+	public void payDebt(double payment){
+		
+	}
 }

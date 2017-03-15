@@ -1,4 +1,3 @@
-
 class Card {
 	String title;
 	//use enums to define card value, i.e. seasons, government in power, water depth. For barrel price this is simply the cost of a barrel

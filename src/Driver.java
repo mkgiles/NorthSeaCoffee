@@ -8,21 +8,21 @@ public class Driver {
 		Bank bank = new Bank();
 		Map map = new Map();
 		Player player = new Player();
-		int victoryState = 0;
-		int startingState = 1;
+		Boolean victoryState = false;
 
 
         driver.runGameMenu();
         
         //Running state for game. Only displays text so far and has prompts to ensure it doesn't create an infinite, Eclipse-crashing death loop
-		while(victoryState !=1)
+        //Need to work on a way to escape runGameMenu to get to the while loop.
+		while(victoryState != true)
         {
         	Driver.phaseOne();
-        	IO.prompt("Press any key to continue...");
+        	IO.prompt("Press any key to continue to phase two.");
         	Driver.phaseTwo();
-        	IO.prompt("Press any key to continue...");
+        	IO.prompt("Press any key to continue to phase three.");
         	Driver.phaseThree();
-        	IO.prompt("Press any key to continue...");
+        	IO.prompt("Press any key to start the next turn.");
         }
 		
 	}
@@ -37,7 +37,7 @@ public class Driver {
 
     private void runGameMenu()
     {
-        int option = gameMenu();
+       int option = gameMenu();
        if(option > 1 && option <= 6){
     	   IO.putLine(option + " players");
     	   Player.addPlayers(option);
@@ -46,7 +46,6 @@ public class Driver {
     	   IO.putLine("Invalid option entered: " + option);     
        }
        IO.prompt("Press any key to continue...");
-         
     }
     
     
@@ -54,6 +53,7 @@ public class Driver {
     private static void phaseOne()
     {
     	Bank.borrowPhase();
+    	//Bank.bankPayment();
     }
     private static void phaseTwo()
     {
@@ -62,5 +62,6 @@ public class Driver {
     private static void phaseThree()
     {
     	Card.activityPhase();
+    	//Bank.bankPayment();
     }
 }
