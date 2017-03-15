@@ -1,18 +1,32 @@
 public class Driver {
-
+	
 	//Will be used to control the for loop as a victory will stop the loop from continuing
-	int victoryState = 1;
+	
 	
 	public static void main(String[] args) {
 		Driver driver = new Driver();
 		Bank bank = new Bank();
 		Map map = new Map();
 		Player player = new Player();
+		int victoryState = 0;
+		int startingState = 1;
 
-		driver.runGameMenu();
+
+        driver.runGameMenu();
+        
+        //Running state for game. Only displays text so far and has prompts to ensure it doesn't create an infinite, Eclipse-crashing death loop
+        //Need to work on a way to escape runGameMenu to get to the while loop.
+		while(victoryState !=1)
+        {
+        	Driver.phaseOne();
+        	IO.prompt("Press any key to continue...");
+        	Driver.phaseTwo();
+        	IO.prompt("Press any key to continue...");
+        	Driver.phaseThree();
+        	IO.prompt("Press any key to continue...");
+        }
 		
-		}
-	
+	}
 	//Input for player amount and player names.
 		
 	public int gameMenu()
@@ -37,17 +51,22 @@ public class Driver {
            IO.prompt("Press any key to continue...");
             
            option = gameMenu();
-           gameRunning();
         }
-        
+         
     }
     
     
-    //Running state for game, foundation. Tried to test with prints but not working just yet. Will pick up to continue.
-    private void gameRunning()
+    //Methods for each phase of the game.
+    private static void phaseOne()
     {
-    Bank.borrowPhase();	
-    Drill.drillPhase();
-    Card.activityPhase();
+    	Bank.borrowPhase();
+    }
+    private static void phaseTwo()
+    {
+    	Drill.drillPhase();
+    }
+    private static void phaseThree()
+    {
+    	Card.activityPhase();
     }
 }
