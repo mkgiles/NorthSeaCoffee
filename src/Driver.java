@@ -2,12 +2,14 @@ public class Driver {
 
 	//Will be used to control the for loop as a victory will stop the loop from continuing
 	int victoryState = 1;
+	Deck deck;
 	
 	public static void main(String[] args) {
 		Driver driver = new Driver();
 		Bank bank = new Bank();
 		Map map = new Map();
 		Player player = new Player();
+		driver.deck = new Deck(true);
 
 		driver.runGameMenu();
 		
@@ -24,20 +26,22 @@ public class Driver {
 
     private void runGameMenu()
     {
-        int option = gameMenu();
+        int option = 0;
         while (option != -1)
         {
+           option = gameMenu();
            if(option > 1 && option <= 6){
         	   IO.putLine(option + " players");
         	   Player.addPlayers(option);
+           }
+           else if(option == 0){
+        	   IO.putLine("SHUFFLE!");
            }
            else{
         	   IO.putLine("Invalid option entered: " + option);     
            }
            IO.prompt("Press any key to continue...");
-            
-           option = gameMenu();
-           gameRunning();
+           gameRunning(); 
         }
         
     }
@@ -46,8 +50,10 @@ public class Driver {
     //Running state for game, foundation. Tried to test with prints but not working just yet. Will pick up to continue.
     private void gameRunning()
     {
-    Bank.borrowPhase();	
-    Drill.drillPhase();
-    Card.activityPhase();
+    //Bank.borrowPhase();	
+    //Drill.drillPhase();
+    //Card.activityPhase();
+    deck.shuffle();
+    System.out.println(deck);
     }
 }
