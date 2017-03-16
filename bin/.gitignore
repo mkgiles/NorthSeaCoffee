@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /Bank.class
 /BarrelCard.class
 /Card.class
@@ -11,3 +12,6 @@
 /SeasonCard.class
 /Tile.class
 /WaterCard.class
+=======
+/Rand.class
+>>>>>>> cardtesting
