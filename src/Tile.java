@@ -1,4 +1,3 @@
-
 public class Tile {
 
 	//Contains information about owner, drill, and blue card.

@@ -18,7 +18,6 @@ public class Driver {
 		while(victoryState != true)
         {
         	driver.gameRunning();
-        	IO.putLine("Press Enter to run next loop.");
         }
 		
 	}
