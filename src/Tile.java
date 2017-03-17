@@ -1,4 +1,7 @@
 public class Tile {
+	Card card;
+	Player player;
+	Drill drill;
 	Tile(){
 	}
 	//Contains information about owner, drill, and blue card.

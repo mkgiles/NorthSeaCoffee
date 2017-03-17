@@ -30,4 +30,10 @@ public class IO {
 		System.out.println(output);
 		scanner.nextLine();
 	}
+	public static void printLine(Object output){
+		System.out.println(output.toString());
+	}
+	public static void print(Object output){
+		System.out.print(output.toString());
+	}
 }

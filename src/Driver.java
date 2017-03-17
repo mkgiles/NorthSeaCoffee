@@ -3,20 +3,19 @@ public class Driver {
 	//Will be used to control the for loop as a victory will stop the loop from continuing
 	Deck deck;
 	Map map;
+	Boolean victoryState;
 	
 	public static void main(String[] args) {
 		Driver driver = new Driver();
 		Bank bank = new Bank();
 		driver.map = new Map();
-		Player player = new Player();
-		Boolean victoryState = false;
 		driver.deck = new Deck(true);
-
+		driver.victoryState = false;
         driver.runGameMenu();
         
         //Running state for game. Only displays text so far and has prompts to ensure it doesn't create an infinite, Eclipse-crashing death loop
         //Need to work on a way to escape runGameMenu to get to the while loop.
-		while(victoryState != true)
+		while(!driver.victoryState)
         {
         	driver.gameRunning();
         }
@@ -34,32 +33,31 @@ public class Driver {
     private void runGameMenu()
     {
         int option = 0;
-        while (option != -1)
+        boolean valid = false;
+        while (!valid)
         {
            option = gameMenu();
            if(option > 1 && option <= 6){
         	   IO.putLine(option + " players");
         	   Player.addPlayers(option);
-           }
-           else if(option == 0){
-        	   IO.putLine("SHUFFLE!");
+        	   valid = true;
            }
            else{
         	   IO.putLine("Invalid option entered: " + option);     
            }
            IO.prompt("Press any key to continue...");
-           gameRunning(); 
         }
     }
     
     
     //Methods for each phase of the game.
     private void gameRunning(){
-    //Bank.borrowPhase();	
-    //Drill.drillPhase();
-    //Card.activityPhase();
-    deck.shuffle();
-    System.out.println(deck);
-    System.out.println(map);
+    //	Bank.borrowPhase();	
+    //	Drill.drillPhase();
+    //	Card.activityPhase();
+    	deck.shuffle();
+    	IO.printLine(deck);
+    	IO.printLine(map);
+    	IO.prompt("Press any key to continue...");
     }
 }
