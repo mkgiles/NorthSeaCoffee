@@ -1,5 +1,6 @@
 public class Tile {
-
+	Tile(){
+	}
 	//Contains information about owner, drill, and blue card.
 	
 //	private String [] shallowWater = {"No Oil", "Small Deposits. 20'000 Barrels", "Medium Deposits, 40'000 Barrels"};

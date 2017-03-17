@@ -2,11 +2,12 @@ public class Driver {
 	
 	//Will be used to control the for loop as a victory will stop the loop from continuing
 	Deck deck;
+	Map map;
 	
 	public static void main(String[] args) {
 		Driver driver = new Driver();
 		Bank bank = new Bank();
-		Map map = new Map();
+		driver.map = new Map();
 		Player player = new Player();
 		Boolean victoryState = false;
 		driver.deck = new Deck(true);
@@ -59,5 +60,6 @@ public class Driver {
     //Card.activityPhase();
     deck.shuffle();
     System.out.println(deck);
+    System.out.println(map);
     }
 }
