@@ -20,6 +20,11 @@ public class Map {
 			 }
 		 }
 	}
+	public void purchase(Player player, String coordinate){
+		Tile tile = tileMap.get(coordinate);
+		player.addConcession(tile);
+		tile.purchase(player);
+	}
 	public String toString(){
 		return tileMap.toString();
 	}

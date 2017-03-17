@@ -10,7 +10,6 @@ public class Drill {
 	//Used to control phase 2
 	public static void drillPhase() {
 		System.out.print("drillPhase");
-		
 	}
 	
 }

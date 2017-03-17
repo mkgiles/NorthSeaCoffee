@@ -4,6 +4,8 @@ public class Player {
 	private static ArrayList<Player> playerList;
 	private int number;
 	private String name;
+	private Tile[] concessions;
+	private int concessionCount = 0;
 	public static void addPlayers(int playerAmount)
 	{
 		playerList = new ArrayList<Player>();
@@ -22,6 +24,16 @@ public class Player {
 	Player(String name, int number){
 		this.name = name;
 		this.number = number;
+		this.concessions = new Tile[7];
+	}
+	public void addConcession(Tile tile){
+		this.concessions[concessionCount++] = tile;
+	}
+	public static int getPlayerCount(){
+		return playerList.size();
+	}
+	public static Player getPlayer(int i){
+		return playerList.get(i);
 	}
 	public double getDebt(){
 		return 0.0;

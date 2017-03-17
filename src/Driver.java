@@ -58,6 +58,11 @@ public class Driver {
     	deck.shuffle();
     	IO.printLine(deck);
     	IO.printLine(map);
+    	for(int i=0; i<Player.getPlayerCount();i++){
+    		IO.printLine(Player.getPlayer(i));
+    		String coordinate = IO.getLine("Pick a concession to purchase");
+    		map.purchase(Player.getPlayer(i), coordinate);
+    	}
     	IO.prompt("Press any key to continue...");
     }
 }
