@@ -55,8 +55,6 @@ public class Driver {
     //	Bank.borrowPhase();	
     //	Drill.drillPhase();
     //	Card.activityPhase();
-    	deck.shuffle();
-    	IO.printLine(deck);
     	IO.printLine(map);
     	for(int i=0; i<Player.getPlayerCount();i++){
     		IO.printLine(Player.getPlayer(i));

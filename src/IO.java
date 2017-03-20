@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import javax.swing.*;
 public class IO {
 	public static Scanner scanner = new Scanner(System.in);
 	public static String getLine(){
@@ -6,9 +7,8 @@ public class IO {
 		return scanner.nextLine();
 	}
 	public static String getLine(String output){
-		System.out.println(output);
-		System.out.print(">");
-		return scanner.nextLine();
+		String input = JOptionPane.showInputDialog(null, output);
+		return input;
 	}
 	public static int getInt(){
 		System.out.print(">");
@@ -17,21 +17,18 @@ public class IO {
 		return ans;
 	}
 	public static int getInt(String output){
-		System.out.println(output);
-		System.out.print(">");
-		int ans = scanner.nextInt();
-		scanner.nextLine();
+		String input = JOptionPane.showInputDialog(null, output);
+		int ans = Integer.parseInt(input);
 		return ans;
 	}
 	public static void putLine(String output){
-		System.out.println(output);
+		JOptionPane.showMessageDialog(null, output, "alert", JOptionPane.INFORMATION_MESSAGE);
 	}
 	public static void prompt(String output){
-		System.out.println(output);
-		scanner.nextLine();
+		putLine(output);
 	}
 	public static void printLine(Object output){
-		System.out.println(output.toString());
+		JOptionPane.showMessageDialog(null, output.toString(), "alert", JOptionPane.INFORMATION_MESSAGE);
 	}
 	public static void print(Object output){
 		System.out.print(output.toString());
