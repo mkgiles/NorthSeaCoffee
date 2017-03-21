@@ -1,7 +1,7 @@
 public class Tile {
-	Card card;
-	Player player;
-	Drill drill;
+	private Card card;
+	private Player player;
+	private Drill drill;
 	Tile(){
 	}
 	public void purchase(Player player){
@@ -9,6 +9,15 @@ public class Tile {
 	}
 	public String toString(){
 		return "Card: " + card + "\nPlayer: " + player + "\nDrill: " + drill;
+	}
+	public Card getCard(){
+		return card;
+	}
+	public Player getPlayer(){
+		return player;
+	}
+	public Drill getDrill(){
+		return drill;
 	}
 	//Contains information about owner and drill
 	

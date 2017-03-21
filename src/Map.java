@@ -21,9 +21,19 @@ public class Map {
 		 }
 	}
 	public void purchase(Player player, String coordinate){
-		Tile tile = tileMap.get(coordinate);
-		player.addConcession(tile);
-		tile.purchase(player);
+		if(tileMap.containsKey(coordinate)){
+			Tile tile = tileMap.get(coordinate);
+			if(tile.getPlayer()==null && player.getConcessionsRemaining() > 0){
+				player.addConcession(tile);
+				tile.purchase(player);
+			}
+			else{
+				IO.putLine("Invalid Concession.");
+			}
+		}
+		else{
+			IO.putLine("Invalid Coordinate");
+		}
 	}
 	public String toString(){
 		return tileMap.toString();

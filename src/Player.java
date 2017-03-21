@@ -41,6 +41,9 @@ public class Player {
 	public void payDebt(double payment){
 		
 	}
+	public int getConcessionsRemaining(){
+		return concessions.length-concessionCount;
+	}
 	public String toString(){
 		return this.name;
 	}
