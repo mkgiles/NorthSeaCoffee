@@ -39,7 +39,7 @@ public class Map {
 		if(tileMap.containsKey(coordinate)){
 			Tile tile = tileMap.get(coordinate);
 			player.dropConcession(tile);
-			tile.sell();
+			tile.sell(player);
 		}
 		else{
 			IO.putLine("NO SALE");
