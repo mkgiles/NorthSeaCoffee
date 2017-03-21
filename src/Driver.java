@@ -12,6 +12,7 @@ public class Driver {
 		Deck.deckInit();
 		driver.deck = new Deck();
 		driver.victoryState = false;
+		IO.putLine("Welcome to North Sea Oil");
         driver.runGameMenu();
         
         //Running state for game. Only displays text so far and has prompts to ensure it doesn't create an infinite, Eclipse-crashing death loop
@@ -26,7 +27,6 @@ public class Driver {
 		
 	public int gameMenu()
 	{
-		 IO.putLine("Welcome to North Sea Oil");
 		 int option=IO.getInt("How many players would you like to play with? (2-6)");
 	     return option;
 	}
