@@ -4,6 +4,7 @@ public class Driver {
 	Deck deck;
 	Map map;
 	Boolean victoryState;
+	Object maplog;
 	
 	public static void main(String[] args) {
 		Driver driver = new Driver();
@@ -56,7 +57,8 @@ public class Driver {
     //	Bank.borrowPhase();	
     //	Drill.drillPhase();
     //	Card.activityPhase();
-    	IO.printLine(map);
+    	IO.delete(maplog);
+    	maplog = IO.print(map);
     	for(int i=0; i<Player.getPlayerCount();i++){
     		IO.printLine(Player.getPlayer(i));
     		String coordinate = IO.getLine("Pick a concession to purchase");
