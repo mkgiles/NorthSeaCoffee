@@ -7,9 +7,14 @@ public class Tile {
 	public void purchase(Player player){
 		this.player = player;
 	}
-	public void sell(){
-		this.player = null;
-		this.drill = null;
+	public void sell(Player player){
+		if(player == this.player){
+			this.player = null;
+			this.drill = null;
+		}
+		else{
+			IO.putLine("You don't own this concession!");
+		}
 	}
 	public String toString(){
 		return "Card: " + card + "\nPlayer: " + player + "\nDrill: " + drill;
