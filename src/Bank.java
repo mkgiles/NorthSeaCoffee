@@ -4,6 +4,7 @@ public class Bank {
 	int borrowLimit = 4000000;
 	int capitalRatesTax;
 	int revenueRatesTax;
+	int interestRate;
 	
 	
 	//Can hopefully store financials for each player in the player class.
@@ -14,6 +15,9 @@ public class Bank {
 	
 		
 		System.out.print("borrowPhase");
+		//Can use RNG to select the variables for each form of tax and interest from the political party card
+		//Can then get those rates from the PartyCard class and set them, here for the turn.
+		
 	}
 	
 	
