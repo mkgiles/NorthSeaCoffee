@@ -35,6 +35,16 @@ public class Map {
 			IO.putLine("Invalid Coordinate");
 		}
 	}
+	public void sell(Player player, String coordinate){
+		if(tileMap.containsKey(coordinate)){
+			Tile tile = tileMap.get(coordinate);
+			player.dropConcession(tile);
+			tile.sell();
+		}
+		else{
+			IO.putLine("NO SALE");
+		}
+	}
 	public String toString(){
 		return tileMap.toString();
 	}

@@ -61,6 +61,8 @@ public class Driver {
     		IO.printLine(Player.getPlayer(i));
     		String coordinate = IO.getLine("Pick a concession to purchase");
     		map.purchase(Player.getPlayer(i), coordinate);
+    		coordinate = IO.getLine("Pick a concession to sell");
+    		map.sell(Player.getPlayer(i), coordinate);
     	}
     	IO.prompt("Press any key to continue...");
     }

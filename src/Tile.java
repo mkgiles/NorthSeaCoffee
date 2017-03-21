@@ -7,6 +7,10 @@ public class Tile {
 	public void purchase(Player player){
 		this.player = player;
 	}
+	public void sell(){
+		this.player = null;
+		this.drill = null;
+	}
 	public String toString(){
 		return "Card: " + card + "\nPlayer: " + player + "\nDrill: " + drill;
 	}
