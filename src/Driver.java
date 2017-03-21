@@ -9,7 +9,8 @@ public class Driver {
 		Driver driver = new Driver();
 		Bank bank = new Bank();
 		driver.map = new Map();
-		driver.deck = new Deck(true);
+		Deck.deckInit();
+		driver.deck = new Deck();
 		driver.victoryState = false;
         driver.runGameMenu();
         

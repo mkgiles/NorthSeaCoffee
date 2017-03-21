@@ -5,4 +5,7 @@ public class BarrelCard extends Card {
 	BarrelCard(String title, int value){
 		super(title, value);
 	}
+	
+	//Barrel card types in a string array.
+	private String[] barrelProperties = { "4 dollars", "10 dollars", "20 dollars"};
 }
