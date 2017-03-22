@@ -56,12 +56,11 @@ public class Driver {
 
     	//PHASE 1;
     	
-    	///////////////////Doesn't lead onto phase 2 yet. Generates an error.///////////////////
     	//Borrowing
     	for(int i=0; i<Player.getPlayerCount();i++){
     		IO.printLine(Player.getPlayer(i));
-    		int answer = IO.getInt("Do you wish to borrow? Yes or No?");
-    		if (answer == 1){
+    		String answer = IO.getLine("Do you wish to borrow? Yes or No?");
+    		if (answer.toUpperCase().charAt(0)=='Y'){
     		Bank.bankBorrow(Player.getPlayer(i));
     		}
     		else
@@ -70,11 +69,11 @@ public class Driver {
     		}
     	}
     	//Paying	
-    	for(int j=0; j<Player.getPlayerCount();j++){
-    		IO.printLine(Player.getPlayer(j));
-    		int answer2 = IO.getInt("Do you wish to repay debt? Yes or No?");
-    		if (answer2 == 1){
-    		Bank.bankPayment(Player.getPlayer(j));
+    	for(int i=0; i<Player.getPlayerCount();i++){
+    		IO.printLine(Player.getPlayer(i));
+    		String answer = IO.getLine("Do you wish to repay debt? Yes or No?");
+    		if (answer.toUpperCase().charAt(0)=='Y'){
+    		Bank.bankPayment(Player.getPlayer(i));
     		}
     		else
     		{
@@ -82,17 +81,28 @@ public class Driver {
     		}
     	}
     	IO.prompt("Press any key to continue to Phase 2");
-    	///////////////////Doesn't lead onto phase 2 yet. Generates an error.///////////////////
     	
     	
     	//PHASE 2
     	IO.printLine(map);
-    	for(int k=0; k<Player.getPlayerCount();k++){
-    		IO.printLine(Player.getPlayer(k));
-    		String coordinate = IO.getLine("Pick a concession to purchase");
-    		map.purchase(Player.getPlayer(k), coordinate);
-    		coordinate = IO.getLine("Pick a concession to sell");
-    		map.sell(Player.getPlayer(k), coordinate);
+    	for(int i=0; i<Player.getPlayerCount();i++){
+    		IO.printLine(Player.getPlayer(i));
+    		String answer = IO.getLine("Do you wish to purchase a concession? Yes or No?");
+    		if (answer.toUpperCase().charAt(0)=='Y'){
+    			String coordinate = IO.getLine("Pick a concession to purchase");
+    			map.purchase(Player.getPlayer(i), coordinate);
+    		}
+    		else{
+    			IO.putLine("NO BUY!");
+    		}
+    		answer = IO.getLine("Do you wish to sell a concession? Yes or No?");
+    		if (answer.toUpperCase().charAt(0)=='Y'){
+    			String coordinate = IO.getLine("Pick a concession to sell");
+    			map.sell(Player.getPlayer(i), coordinate);
+    		}
+    		else{
+    			IO.putLine("NO SELL!");
+    		}
     	}
     	IO.prompt("Press any key to continue to Phase 3");
     	//PHASE 3
