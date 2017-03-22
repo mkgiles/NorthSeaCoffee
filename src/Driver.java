@@ -70,6 +70,7 @@ public class Driver {
     		}
     	}
     	//Paying	
+    	//Generates error upon selecting NULL for Yes/No answer.
     	for(int i=0; i<Player.getPlayerCount();i++){
     		IO.printLine(Player.getPlayer(i));
     		String answer = IO.getLine("Do you wish to repay debt? Yes or No?");
@@ -80,6 +81,7 @@ public class Driver {
     		{
     			IO.putLine("No payment made.");
     		}
+    		
     	}
     	IO.prompt("Press any key to continue to Phase 2");
     	

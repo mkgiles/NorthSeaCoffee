@@ -2,6 +2,7 @@
 public class Bank {
 
 	static int borrowLimit = 4000000;
+	static int victoryGoal = 5000000;
 	int capitalRatesTax;
 	int revenueRatesTax;
 	int interestRate;
@@ -26,11 +27,12 @@ public class Bank {
 	
 	public static void bankPayment(Player player)
 	{	
-		 int payment=IO.getInt("How much do you wish to pay your bank? " + player.getDebt() + " Dollars in debt.");
+		IO.putLine("Your debt is " + player.getDebt());
+		 int payment=IO.getInt("How much do you wish to pay your bank?");
 		 {
-			 if(payment < player.getDebt() && payment > 0)
+			 if(payment < player.getDebt() && payment > -1)
 			 {
-				 player.payDebt(player.getDebt()-payment);
+				 player.payDebt(payment);
 			 }
 			 else 
 			 {
@@ -41,9 +43,10 @@ public class Bank {
 	
 	public static void bankBorrow(Player player)
 	{
-		IO.putLine("Your debt is" + player.getDebt());
-		int borrow=IO.getInt("How much do you wish to borrow?");
-		if(borrow < borrowLimit && borrow >= 0)
+		IO.putLine("Your debt is " + player.getDebt());
+		IO.putLine("How much do you wish to borrow?");
+		int borrow=IO.getInt("500000 or 1000000?");
+		if(borrow < borrowLimit && (borrow == 500000 || borrow == 1000000))
 		{
 			player.addLoan(borrow);
 		}
@@ -51,6 +54,12 @@ public class Bank {
 		{
 			IO.putLine("Invalid option entered"); 
 		}
+	}
+	
+	//Will be used to check if a player is victorious. If a player is victorious
+	//The harsh but fair ruling of RNGesus will be dealt and the victor shall emerge.
+	public static void victoryCheck(Player player)
+	{
 	}
 	
 	

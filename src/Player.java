@@ -47,7 +47,7 @@ public class Player {
 		addCash(amount);
 		return this.debt = debt + amount;
 	}
-	//Adds cash to player and also puts up debt
+	//Adds cash to player
 	public void addCash(double addCash)
 	{
 		this.cash = cash + addCash;
