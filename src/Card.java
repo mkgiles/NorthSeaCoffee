@@ -13,7 +13,4 @@ abstract class Card {
 		System.out.print("activityPhase");
 		
 	}
-	public String toString(){
-		return title + " | " + value;
-	}
 }

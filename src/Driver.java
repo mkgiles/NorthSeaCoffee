@@ -69,11 +69,8 @@ public class Driver {
     		{
     			IO.putLine("Nothing borrowed.");
     		}
-    	}
-    	//Paying	
-    	for(int i=0; i<Player.getPlayerCount();i++){
-    		IO.printLine(Player.getPlayer(i));
-    		String answer = IO.getLine("Do you wish to repay debt? Yes or No?");
+    		answer = null;
+    		answer = IO.getLine("Do you wish to repay debt? Yes or No?");
     		if (answer != null && answer.toUpperCase().charAt(0)=='Y'){
     		Bank.bankPayment(Player.getPlayer(i));
     		}
@@ -96,6 +93,7 @@ public class Driver {
     		else{
     			IO.putLine("NO BUY!");
     		}
+    		answer = null;
     		answer = IO.getLine("Do you wish to sell a concession? Yes or No?");
     		if (answer != null && answer.toUpperCase().charAt(0)=='Y'){
     			String coordinate = IO.getLine("Pick a concession to sell");
