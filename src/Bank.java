@@ -1,7 +1,7 @@
 
 public class Bank {
 
-	int borrowLimit = 4000000;
+	static int borrowLimit = 4000000;
 	int capitalRatesTax;
 	int revenueRatesTax;
 	int interestRate;
@@ -23,9 +23,10 @@ public class Bank {
 	
 	//Potential method to use in the first and third phases of the game to pay off player debt. If not, concept should
 	//hopefully inspire better method. Need to have a way of managing individual player debt as well as inventory.
+	
 	public static void bankPayment(Player player)
 	{	
-		 int payment=IO.getInt("How much do you wish to pay your bank?");
+		 int payment=IO.getInt("How much do you wish to pay your bank? " + player.getDebt() + " Dollars in debt.");
 		 {
 			 if(payment < player.getDebt())
 			 {
@@ -37,6 +38,22 @@ public class Bank {
 			 }
 		 }
 	}
+	
+	public static void bankBorrow(Player player)
+	{
+		IO.putLine("Your debt is" + player.getDebt());
+		int borrow=IO.getInt("How much do you wish to borrow?");
+			if(borrow < borrowLimit)
+		{
+				player.addCash(borrow);
+		}
+		 else 
+		 {
+			 IO.putLine("Invalid option entered"); 
+		 }
+	}
+	
+	
 	
 	
 	

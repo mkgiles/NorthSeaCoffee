@@ -5,6 +5,8 @@ public class Player {
 	private int number;
 	private String name;
 	private ArrayList<Tile> concessions;
+	private double cash;
+	private double debt;
 	public static void addPlayers(int playerAmount)
 	{
 		playerList = new ArrayList<Player>();
@@ -37,11 +39,26 @@ public class Player {
 	public static Player getPlayer(int i){
 		return playerList.get(i);
 	}
-	public double getDebt(){
-		return 0.0;
+	
+	//Adds cash to player and also puts up debt
+	public void addCash(double addCash)
+	{
+		this.cash = cash + addCash;
+		this.debt = debt + addCash;
 	}
+	
+	//Gets cash
+	public double getCash(){
+		return cash;
+	}
+	
+	//Gets debt
+	public double getDebt(){
+		return debt;
+	}
+	//Pays debt
 	public void payDebt(double payment){
-		
+		this.debt = debt-payment;
 	}
 	public int getConcessionsRemaining(){
 		return 7-concessions.size();
