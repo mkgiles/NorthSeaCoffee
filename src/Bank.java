@@ -28,7 +28,7 @@ public class Bank {
 	{	
 		 int payment=IO.getInt("How much do you wish to pay your bank? " + player.getDebt() + " Dollars in debt.");
 		 {
-			 if(payment < player.getDebt())
+			 if(payment < player.getDebt() && payment > 0)
 			 {
 				 player.payDebt(player.getDebt()-payment);
 			 }
@@ -43,14 +43,14 @@ public class Bank {
 	{
 		IO.putLine("Your debt is" + player.getDebt());
 		int borrow=IO.getInt("How much do you wish to borrow?");
-			if(borrow < borrowLimit)
+		if(borrow < borrowLimit && borrow >= 0)
 		{
-				player.addCash(borrow);
+			player.addCash(borrow);
 		}
-		 else 
-		 {
-			 IO.putLine("Invalid option entered"); 
-		 }
+		else 
+		{
+			IO.putLine("Invalid option entered"); 
+		}
 	}
 	
 	

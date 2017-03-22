@@ -34,15 +34,13 @@ public class IO {
 	public static JDialog print(Object output){
 		JDialog dialog = new JDialog((Frame) null, "dialog");
 		dialog.setSize(300, 200);
-		dialog.setLocationRelativeTo(null);
+		dialog.setLocation(0, 0);
 		JPanel p = new JPanel();
 		dialog.add(p);
 		JTextArea text = new JTextArea();
 		p.add(text);
-		p.setSize(dialog.WIDTH,dialog.HEIGHT);
 		p.setBackground(Color.WHITE);
 		text.setText(output.toString());
-		text.setLocation(p.WIDTH/2, p.HEIGHT/2);
 		text.setOpaque(false);
 		dialog.pack();
 		dialog.setVisible(true);
