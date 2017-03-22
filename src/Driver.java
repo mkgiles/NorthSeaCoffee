@@ -14,6 +14,7 @@ public class Driver {
 		driver.deck = new Deck();
 		driver.victoryState = false;
 		IO.putLine("Welcome to North Sea Oil");
+		Drill[] drills = new Drill[13];
         driver.runGameMenu();
         
         //Running state for game. Only displays text so far and has prompts to ensure it doesn't create an infinite, Eclipse-crashing death loop
@@ -78,6 +79,7 @@ public class Driver {
     		{
     			IO.putLine("No payment made.");
     		}
+    		
     	}
     	IO.prompt("Press any key to continue to Phase 2");
     	
@@ -101,6 +103,15 @@ public class Driver {
     		}
     		else{
     			IO.putLine("NO SELL!");
+    		}
+    		IO.printLine(Player.getPlayer(i));
+    		answer = IO.getLine("Do you wish to purchase a drill? Yes or No?");
+    		if (answer.toUpperCase().charAt(0)=='Y'){
+    			String coordinate = IO.getLine("Pick a drill type to purchase");
+    			map.purchase(Player.getPlayer(i), coordinate);
+    		}
+    		else{
+    			IO.putLine("NO BUY!");
     		}
     	}
     	IO.prompt("Press any key to continue to Phase 3");
