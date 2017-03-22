@@ -54,18 +54,44 @@ public class Driver {
     
     //Methods for each phase of the game.
     private void gameRunning(){
-    //	Bank.borrowPhase();	
-    //	Drill.drillPhase();
-    //	Card.activityPhase();
-    	IO.delete(maplog);
-    	maplog = IO.print(map);
     	for(int i=0; i<Player.getPlayerCount();i++){
     		IO.printLine(Player.getPlayer(i));
-    		String coordinate = IO.getLine("Pick a concession to purchase");
-    		map.purchase(Player.getPlayer(i), coordinate);
-    		coordinate = IO.getLine("Pick a concession to sell");
-    		map.sell(Player.getPlayer(i), coordinate);
+    		int answer = IO.getInt("Do you wish to borrow? Yes or No?");
+    		if (answer == 1){
+    		Bank.bankBorrow(Player.getPlayer(i));
+    		}
+    		else
+    		{
+    			IO.putLine("Nothing borrowed.");
+    		}
     	}
-    	IO.prompt("Press any key to continue...");
+    	//Paying	
+    	for(int j=0; j<Player.getPlayerCount();j++){
+    		IO.printLine(Player.getPlayer(j));
+    		int answer2 = IO.getInt("Do you wish to repay debt? Yes or No?");
+    		if (answer2 == 1){
+    		Bank.bankPayment(Player.getPlayer(j));
+    		}
+    		else
+    		{
+    			IO.putLine("No payment made.");
+    		}
+    	}
+    	IO.prompt("Press any key to continue to Phase 2");
+    	///////////////////Doesn't lead onto phase 2 yet. Generates an error.///////////////////
+    	
+    	
+    	//PHASE 2
+    	IO.delete(maplog);
+    	maplog = IO.print(map);
+    	for(int k=0; k<Player.getPlayerCount();k++){
+    		IO.printLine(Player.getPlayer(k));
+    		String coordinate = IO.getLine("Pick a concession to purchase");
+    		map.purchase(Player.getPlayer(k), coordinate);
+    		coordinate = IO.getLine("Pick a concession to sell");
+    		map.sell(Player.getPlayer(k), coordinate);
+    	}
+    	IO.prompt("Press any key to continue to Phase 3");
+    	//PHASE 3
     }
 }
