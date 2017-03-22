@@ -7,6 +7,7 @@ public class Player {
 	private ArrayList<Tile> concessions;
 	private double cash;
 	private double debt;
+	private ArrayList<Drill> drills;
 	public static void addPlayers(int playerAmount)
 	{
 		playerList = new ArrayList<Player>();
@@ -33,18 +34,23 @@ public class Player {
 	public void dropConcession(Tile tile){
 		this.concessions.remove(tile);
 	}
+	public void buyDrill(Drill drill){
+		drills.add(drill);
+	}
 	public static int getPlayerCount(){
 		return playerList.size();
 	}
 	public static Player getPlayer(int i){
 		return playerList.get(i);
 	}
-	
+	public double addLoan(double amount){
+		addCash(amount);
+		return this.debt = debt + amount;
+	}
 	//Adds cash to player and also puts up debt
 	public void addCash(double addCash)
 	{
 		this.cash = cash + addCash;
-		this.debt = debt + addCash;
 	}
 	
 	//Gets cash

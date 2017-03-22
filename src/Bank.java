@@ -45,7 +45,7 @@ public class Bank {
 		int borrow=IO.getInt("How much do you wish to borrow?");
 		if(borrow < borrowLimit && borrow >= 0)
 		{
-			player.addCash(borrow);
+			player.addLoan(borrow);
 		}
 		else 
 		{
