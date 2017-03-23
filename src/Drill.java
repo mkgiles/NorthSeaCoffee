@@ -5,6 +5,7 @@ public class Drill {
 	private enum drillType {
 		SHALLOW, DEEP, REEF
 	}
+	public static Drill[] drillList = new Drill[] { new Drill(0), new Drill(0),new Drill(0), new Drill(0),new Drill(1),new Drill(1), new Drill(1),new Drill(1), new Drill(1),new Drill(2),new Drill(2),new Drill(2)};
 	private drillType type;
 	private Player owner;
 	private Tile tile;
@@ -16,6 +17,15 @@ public class Drill {
 	}
 	public void place(Tile tile){
 		this.tile = tile;
+	}
+	public int getType(){
+		return this.type.ordinal();
+	}
+	public Player getOwner(){
+		return this.owner;
+	}
+	public Tile getTile(){
+		return this.tile;
 	}
 	//Used to control phase 2
 	public static void drillPhase() {

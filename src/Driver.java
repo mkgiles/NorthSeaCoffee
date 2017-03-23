@@ -107,8 +107,18 @@ public class Driver {
     		IO.printLine(Player.getPlayer(i));
     		answer = IO.getLine("Do you wish to purchase a drill? Yes or No?");
     		if (answer.toUpperCase().charAt(0)=='Y'){
-    			String coordinate = IO.getLine("Pick a drill type to purchase");
-    			map.purchase(Player.getPlayer(i), coordinate);
+    			int type = IO.getInt("Pick a drill type to purchase");
+    			Drill drill = null;
+    			for(int j = 0; j<Drill.drillList.length;j++){
+    				if(Drill.drillList[j].getType() == type){
+    					if(Drill.drillList[j].getOwner() != null){
+    						drill=Drill.drillList[j];
+    						drill.purchase(Player.getPlayer(i));
+    						Player.getPlayer(i).buyDrill(drill);
+    						break;
+    					}
+    				}
+    			}
     		}
     		else{
     			IO.putLine("NO BUY!");

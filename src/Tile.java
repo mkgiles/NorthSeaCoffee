@@ -28,6 +28,9 @@ public class Tile {
 	public Drill getDrill(){
 		return drill;
 	}
+	public void setDrill(Drill drill){
+		this.drill = drill;
+	}
 	//Contains information about owner and drill
 	
 
