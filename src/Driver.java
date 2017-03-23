@@ -125,6 +125,26 @@ public class Driver {
     		else{
     			IO.putLine("NO BUY!");
     		}
+    		answer = null;
+    		answer = IO.getLine("Do you wish to sell a drill? Yes or No?");
+    		if (answer.toUpperCase().charAt(0)=='Y'){
+    			int type = IO.getInt("Pick a drill type to sell");
+    			Drill drill = null;
+    			Player player = Player.getPlayer(i);
+    			for(int j = 0; j<player.getDrillCount();j++){
+    				if(player.getDrill(j).getType() == type){
+    					if(Drill.drillList[j].getTile() != null){
+    						drill=Drill.drillList[j];
+    						drill.sell();
+    						player.sellDrill(drill);
+    						break;
+    					}
+    				}
+    			}
+    		}
+    		else{
+    			IO.putLine("NO SELL!");
+    		}
     	}
     	IO.prompt("Press any key to continue to Phase 3");
     	//PHASE 3

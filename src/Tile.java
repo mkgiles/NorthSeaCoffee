@@ -31,6 +31,15 @@ public class Tile {
 	public void setDrill(Drill drill){
 		this.drill = drill;
 	}
+	public void dropDrill(){
+		this.drill = null;
+	}
+	public void addCard(WaterCard card){
+		this.card = card;
+	}
+	public void dropCard(){
+		this.card = null;
+	}
 	//Contains information about owner and drill
 	
 

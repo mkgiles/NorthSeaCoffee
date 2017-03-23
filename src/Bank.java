@@ -69,18 +69,19 @@ public class Bank {
 	//The harsh but fair ruling of RNGesus will be dealt and the victor shall emerge.
 	
 	
-	public static void playerStateCheck(Player player)
+	public static void playerStateCheck()
 	{
     	for(int i=0; i<Player.getPlayerCount();i++){
-    		if (player.getCash() == 0 && player.getDebt() == 4000000 && Player.getConcessions() == 0 && Player.getDrills() == 0 )
+    		Player player = Player.getPlayer(i);
+    		if (player.getCash() <= 0 && player.getDebt() >= 4000000 && player.getConcessionsRemaining() == 7 && player.getDrillCount() == 0 )
     		{
-    			player.playerBankrupt(i);
+    			Player.playerBankrupt(i);
     			
     		}
     		else{
-    			if(player.getCash() == victoryGoal && player.getDebt() == 0)
+    			if(player.getCash() >= victoryGoal && player.getDebt() == 0)
     			{
-    				player.playerWinner(i);
+    				Player.playerWinner(i);
     			}
     		}
     	}
