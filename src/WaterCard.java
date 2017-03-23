@@ -6,7 +6,7 @@ public class WaterCard extends Card{
 		super(title, value);
 		this.back = back;
 	}
-	protected static Card[] cards = {new WaterCard("Shallow Water", "No Oil", null)};
+	protected static Card[] cards = {new WaterCard("Shallow Water", "No Oil", null),new WaterCard("Shallow Water", "Small Deposits", 20000),new WaterCard("Shallow Water", "Medium Deposits", 40000),new WaterCard("Reefs", "No Oil", null),new WaterCard("Reefs", "Small Deposits", 20000),new WaterCard("Reefs", "Medium Deposits", 40000),new WaterCard("Reefs", "Large Deposits", 100000),new WaterCard("Deep Water", "Small Deposits", 20000),new WaterCard("Deep Water", "Medium Deposits", 40000),new WaterCard("Deep Water", "Large Deposits", 100000)};
 	protected static void loadDeck(Deck deck){
 		 for(int i = 0; i<cards.length;i++){
 				deck.add(cards[i]);
@@ -17,7 +17,9 @@ public class WaterCard extends Card{
 	private static String [] shallowWater = {"No Oil", "Small Deposits. 20'000 Barrels", "Medium Deposits, 40'000 Barrels"};
 	private static String [] reefs = {"No Oil", "Small Deposits. 20'000 Barrels", "Medium Deposits, 40'000 Barrels", "Large Deposits, 100'000 Barrels"};
 	private static String [] deepWater = {"No Oil", "Small Deposits. 20'000 Barrels", "Medium Deposits, 40'000 Barrels", "Large Deposits, 100'000 Barrels"};
-
+	public String toString(){
+		return title + '|' + back;
+	}
 }
 
 

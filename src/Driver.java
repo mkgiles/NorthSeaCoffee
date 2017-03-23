@@ -16,7 +16,11 @@ public class Driver {
 		driver.weatherDeck = new Deck();
 		driver.barrelDeck = new Deck();
 		PartyCard.loadDeck(driver.barrelDeck);
+		WaterCard.loadDeck(driver.waterDeck);
+		driver.barrelDeck.shuffle();
+		driver.waterDeck.shuffle();
 		IO.print(driver.barrelDeck);
+		IO.print(driver.waterDeck);
 		driver.victoryState = false;
 		IO.putLine("Welcome to North Sea Oil");
 		Drill[] drills = new Drill[13];
