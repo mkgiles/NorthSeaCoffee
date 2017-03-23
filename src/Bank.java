@@ -89,7 +89,7 @@ public class Bank {
 	//Unfinished
 	public static void auction()
 	{
-		double highestBid;
+		double highestBid = 0;
 		ArrayList<Double> bids = new ArrayList<Double>();
 		
     	for(int i=0; i<Player.getPlayerCount();i++){
@@ -101,6 +101,19 @@ public class Bank {
     		}
     		else{
     			IO.putLine("Backed out of the bidding.");
+    		}
+    	}
+    	for(int i=0; i<Player.getPlayerCount();i++)
+    	{
+    		if(bids.get(i) > highestBid)
+    		highestBid = bids.get(i);
+    	}
+    	for(int i=0; i<Player.getPlayerCount();i++)
+    	{
+    		String answer = IO.getLine("The highest bid was " + highestBid + "Do you wish to continue the auction?");
+    		if (answer.toUpperCase().charAt(0)!='Y')
+    		{
+    			bids.set(i, (double) -1);
     		}
     	}
 	}
