@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class Bank {
 
 	static int borrowLimit = 4000000;
@@ -80,6 +82,25 @@ public class Bank {
     			{
     				player.playerWinner(i);
     			}
+    		}
+    	}
+	}
+	
+	//Unfinished
+	public static void auction()
+	{
+		double highestBid;
+		ArrayList<Double> bids = new ArrayList<Double>();
+		
+    	for(int i=0; i<Player.getPlayerCount();i++){
+    		IO.printLine(Player.getPlayer(i));
+    		String answer = IO.getLine("Do you wish to purchase a concession? Yes or No?");
+    		if (answer.toUpperCase().charAt(0)=='Y'){
+    			double bid = IO.getDouble("Make your bid!");
+    			bids.add(bid);
+    		}
+    		else{
+    			IO.putLine("Backed out of the bidding.");
     		}
     	}
 	}

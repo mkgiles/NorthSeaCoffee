@@ -16,10 +16,19 @@ public class IO {
 		scanner.nextLine();
 		return ans;
 	}
+	
 	public static int getInt(String output){
 		System.out.println(output);
 		System.out.print(">");
 		int ans = scanner.nextInt();
+		scanner.nextLine();
+		return ans;
+	}
+	
+	public static double getDouble(String output){
+		System.out.println(output);
+		System.out.print(">");
+		double ans = scanner.nextDouble();
 		scanner.nextLine();
 		return ans;
 	}
