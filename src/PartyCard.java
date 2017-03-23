@@ -2,10 +2,15 @@
 public class PartyCard extends Card {
 	
 	//To be subclass in the card class for political party cards.
-	PartyCard(String title, int value){
+	PartyCard(String title, Object value){
 		super(title, value);
 	}
-	
+	 private static Card[] cards = {new PartyCard("conservative", "NIL 25 20"),new PartyCard("conservative", "NIL 25 20"),new PartyCard("conservative", "NIL 50 10"),new PartyCard("conservative", "25 25 10"),new PartyCard("conservative", "NIL NIL 20"),new PartyCard("conservative", "25 50 10"),new PartyCard("labour", "70 50 5"),new PartyCard("labour", "50 25 10"),new PartyCard("labour", "50 50 5"),new PartyCard("labour", "75 75 5")};
+	 protected static void loadDeck(Deck deck){
+		 for(int i = 0; i<cards.length;i++){
+				deck.add(cards[i]);
+			}
+	 }
 	//Conservative and Labour cards, read from left to right as Cap tax, Rev tax, Interest.
 	private String[][][] partyProperties = {conservative, labour};
     /////////////////////////////////////////////////////////////////////	

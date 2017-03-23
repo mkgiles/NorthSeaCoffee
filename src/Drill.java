@@ -15,8 +15,14 @@ public class Drill {
 	public void purchase(Player owner){
 		this.owner = owner;
 	}
+	public void sell(){
+		this.owner = null;
+	}
 	public void place(Tile tile){
 		this.tile = tile;
+	}
+	public void displace(){
+		this.tile = null;
 	}
 	public int getType(){
 		return this.type.ordinal();
