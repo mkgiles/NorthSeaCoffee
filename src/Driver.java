@@ -94,7 +94,7 @@ public class Driver {
     		if (answer.toUpperCase().charAt(0)=='Y'){
     			String coordinate = IO.getLine("Pick a concession to auction for.");
     			//map.purchase(Player.getPlayer(i), coordinate);
-    			Bank.auction();
+    			Bank.auction(1);
     		}
     		else{
     			IO.putLine("NO BUY!");

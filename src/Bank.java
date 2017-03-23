@@ -88,11 +88,12 @@ public class Bank {
 	}
 	
 	//Unfinished
-	public static void auction()
+	public static void auction(int menu){
 	{
+		while(menu !=5){
 		double highestBid = 0;
 		ArrayList<Double> bids = new ArrayList<Double>();
-		int menu = 1;
+
 		
 		while(menu == 1){
     	for(int i=0; i<Player.getPlayerCount();i++){
@@ -124,10 +125,7 @@ public class Bank {
     			bids.set(k, (double) -1);
     		}
     	}
-    	menu = 3;
-	}
-    	
-    	while(menu == 3)
+
     	{
         	for(int i=0; i<Player.getPlayerCount();i++){
         		if(bids.get(i) !=1){
@@ -139,7 +137,9 @@ public class Bank {
         		}
         		}
         	}
-        	menu = 2;
     	}
+    	}
+		}
+	}
 	}
 }
