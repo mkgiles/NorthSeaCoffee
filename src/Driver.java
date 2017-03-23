@@ -100,10 +100,11 @@ public class Driver {
     	IO.printLine(map);
     	for(int i=0; i<Player.getPlayerCount();i++){
     		IO.printLine(Player.getPlayer(i));
-    		String answer = IO.getLine("Do you wish to purchase a concession? Yes or No?");
+    		String answer = IO.getLine("Do you wish to call an auction for a concession? Yes or No?");
     		if (answer.toUpperCase().charAt(0)=='Y'){
-    			String coordinate = IO.getLine("Pick a concession to purchase");
-    			map.purchase(Player.getPlayer(i), coordinate);
+    			String coordinate = IO.getLine("Pick a concession to auction for.");
+    			//map.purchase(Player.getPlayer(i), coordinate);
+    			Bank.auction(1);
     		}
     		else{
     			IO.putLine("NO BUY!");
@@ -162,4 +163,4 @@ public class Driver {
     	IO.prompt("Press any key to continue to Phase 3");
     	//PHASE 3
     }
-}
+} 
