@@ -1,7 +1,8 @@
 public class Driver {
 	
 	//Will be used to control the for loop as a victory will stop the loop from continuing
-	Deck deck;
+	Deck waterDeck, partyDeck, weatherDeck, barrelDeck;
+	Card partyCard, weatherCard, barrelCard;
 	Map map;
 	Boolean victoryState;
 	
@@ -10,11 +11,16 @@ public class Driver {
 		Bank bank = new Bank();
 		driver.map = new Map();
 		Deck.deckInit();
-		driver.deck = new Deck();
+		driver.waterDeck = new Deck();
+		driver.partyDeck = new Deck();
+		driver.weatherDeck = new Deck();
+		driver.barrelDeck = new Deck();
+		PartyCard.loadDeck(driver.barrelDeck);
+		IO.print(driver.barrelDeck);
 		driver.victoryState = false;
 		IO.putLine("Welcome to North Sea Oil");
 		Drill[] drills = new Drill[13];
-        driver.runGameMenu();
+		driver.runGameMenu();
         
         //Running state for game. Only displays text so far and has prompts to ensure it doesn't create an infinite, Eclipse-crashing death loop
         //Need to work on a way to escape runGameMenu to get to the while loop.
@@ -113,13 +119,16 @@ public class Driver {
     			Drill drill = null;
     			for(int j = 0; j<Drill.drillList.length;j++){
     				if(Drill.drillList[j].getType() == type){
-    					if(Drill.drillList[j].getOwner() != null){
+    					if(Drill.drillList[j].getOwner() == null){
     						drill=Drill.drillList[j];
     						drill.purchase(Player.getPlayer(i));
     						Player.getPlayer(i).buyDrill(drill);
     						break;
     					}
     				}
+    			}
+    			if(drill == null){
+    				IO.putLine("NO DRILLS LEFT!");
     			}
     		}
     		else{
