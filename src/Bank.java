@@ -142,5 +142,40 @@ public class Bank {
 		}
 	}
 	}
+	public static void bidWar(Tile tile){
+		double[] bids = new double[Player.getPlayerCount()];
+		double highestBid = 0.0;
+		int bidders = bids.length;
+		Player highestBidder = null;
+		while(bidders > 1){
+			for(int i = 0; i<bids.length; i++){
+				if(bids[i]>=0){
+					IO.printLine(Player.getPlayer(i));
+					IO.putLine("Highest bid is currently: " + highestBid);
+					if(IO.getLine("Do you want to bid?").toUpperCase().charAt(0)=='Y'){
+						double bid=IO.getDouble("Enter Bid amount: ");
+						if(Player.getPlayer(i).getCash()>bid){
+							bids[i]=bid;
+							if(bid > highestBid){
+								highestBid = bid;
+								highestBidder = Player.getPlayer(i);
+							}
+						}
+						else{
+							IO.putLine("Insufficient Funds.");
+						}
+					}
+					else{
+						bids[i]=-1;
+						bidders--;
+					}
+				}
+			}
+		}
+		if(highestBidder!=null){
+			highestBidder.addConcession(tile);
+			tile.purchase(highestBidder);
+		}
+	}
 }
  

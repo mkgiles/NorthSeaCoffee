@@ -24,17 +24,17 @@ public class Map {
 		if(tileMap.containsKey(coordinate)){
 			Tile tile = tileMap.get(coordinate);
 			if(tile.getPlayer()==null && player.getConcessionsRemaining() > 0){
-				player.addConcession(tile);
-				tile.purchase(player);
+				Bank.bidWar(tile);
 			}
 			else{
-				IO.putLine("Invalid Concession.");
+				IO.putLine("Cannot process.");
 			}
 		}
 		else{
-			IO.putLine("Invalid Coordinate");
+			IO.putLine("Invalid Coordinate.");
 		}
 	}
+	
 	public void sell(Player player, String coordinate){
 		if(tileMap.containsKey(coordinate)){
 			Tile tile = tileMap.get(coordinate);
