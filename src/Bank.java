@@ -92,30 +92,54 @@ public class Bank {
 	{
 		double highestBid = 0;
 		ArrayList<Double> bids = new ArrayList<Double>();
+		int menu = 1;
 		
+		while(menu == 1){
     	for(int i=0; i<Player.getPlayerCount();i++){
     		IO.printLine(Player.getPlayer(i));
-    		String answer = IO.getLine("Do you wish to purchase a concession? Yes or No?");
+    		String answer = IO.getLine("Do you wish to bid for a concession? Yes or No?");
     		if (answer.toUpperCase().charAt(0)=='Y'){
     			double bid = IO.getDouble("Make your bid!");
-    			bids.add(bid);
+    			bids.add(i, bid);
     		}
     		else{
     			IO.putLine("Backed out of the bidding.");
     		}
+    		menu = 2;
     	}
-    	for(int i=0; i<Player.getPlayerCount();i++)
+		}
+    	
+    	while(menu == 2){
+    	for(int j=0; j<Player.getPlayerCount();j++)
     	{
-    		if(bids.get(i) > highestBid)
-    		highestBid = bids.get(i);
+    		if(bids.get(j) > highestBid)
+    		highestBid = bids.get(j);
+    		IO.putLine("Bid updated.");
     	}
-    	for(int i=0; i<Player.getPlayerCount();i++)
+    	for(int k=0; k<Player.getPlayerCount();k++)
     	{
-    		String answer = IO.getLine("The highest bid was " + highestBid + "Do you wish to continue the auction?");
+    		String answer = IO.getLine(Player.getPlayer(k) + ", The highest bid was " + highestBid + " Do you wish to continue the auction?");
     		if (answer.toUpperCase().charAt(0)!='Y')
     		{
-    			bids.set(i, (double) -1);
+    			bids.set(k, (double) -1);
     		}
+    	}
+    	menu = 3;
+	}
+    	
+    	while(menu == 3)
+    	{
+        	for(int i=0; i<Player.getPlayerCount();i++){
+        		if(bids.get(i) !=1){
+        		IO.printLine(Player.getPlayer(i));
+        		String answer = IO.getLine("Do you wish to bid for a concession? Yes or No?");
+        		if (answer.toUpperCase().charAt(0)=='Y'){
+        			double bid = IO.getDouble("Make your bid!");
+        			bids.set(i, bid);
+        		}
+        		}
+        	}
+        	menu = 2;
     	}
 	}
 }
