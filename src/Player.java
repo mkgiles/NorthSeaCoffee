@@ -4,10 +4,10 @@ public class Player {
 	private static ArrayList<Player> playerList;
 	private int number;
 	private String name;
-	private ArrayList<Tile> concessions;
+	private static ArrayList<Tile> concessions;
 	private double cash;
 	private double debt;
-	private ArrayList<Drill> drills;
+	private static ArrayList<Drill> drills;
 	public static void addPlayers(int playerAmount)
 	{
 		playerList = new ArrayList<Player>();
@@ -53,6 +53,12 @@ public class Player {
 		this.cash = cash + addCash;
 	}
 	
+	//Removes cash from player
+	public void removeCash(double removeCash)
+	{
+		this.cash = cash - removeCash;
+	}
+	
 	//Gets cash
 	public double getCash(){
 		return cash;
@@ -62,6 +68,17 @@ public class Player {
 	public double getDebt(){
 		return debt;
 	}
+	
+	//Gets concessions
+	public static int getConcessions(){
+		return concessions.size();
+	}
+	
+	//Gets drills
+	public static int getDrills(){
+		return drills.size();
+	}
+	
 	//Pays debt
 	public void payDebt(double payment){
 		this.debt = debt-payment;
@@ -71,5 +88,16 @@ public class Player {
 	}
 	public String toString(){
 		return this.name;
+	}
+	public void playerBankrupt(int i) {
+	playerList.remove(i);
+		
+	}
+	
+	//Start of a victory check in Player. Will eventually determine winner between multiple winners
+	public void playerWinner(int i) {
+		
+		IO.putLine(Player.getPlayer(i) + "has won!");
+		
 	}
 }
