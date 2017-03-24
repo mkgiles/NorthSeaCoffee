@@ -108,6 +108,7 @@ public class Driver {
     		IO.printLine(player);
     		int option = -1;
     		while(option != 0){
+    			IO.print(map);
     			String coordinate = null;
     			int buyLimit = 0;
     			int testLimit = 0;
@@ -232,7 +233,7 @@ public class Driver {
     	IO.putLine("Current Party:\n" + partyCard.title + "\nPolicies:\nCapital Tax | Revenue Tax | Interest\n " + partyCard.value + "\n_______________________");
     	IO.putLine("Weather Forecast: \n" + "Season: \n" + weatherCard.title + "\nWeather: \n" + weatherCard.getWeather() + "\n_______________________");
     	IO.putLine("Cost per barrel of Oil: $" + barrelCard.value);
-    	
+    	map.weather(weatherCard, barrelCard);
     	//LAST METHOD
     for(int i=0; i<Player.getPlayerCount();i++)
     {
