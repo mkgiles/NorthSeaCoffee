@@ -88,34 +88,101 @@ public class Bank {
 	}
 	
 	//Unfinished
-	public static void auction()
+	public static void auction(int menu){
 	{
+		while(menu !=5){
 		double highestBid = 0;
 		ArrayList<Double> bids = new ArrayList<Double>();
+
 		
+		while(menu == 1){
     	for(int i=0; i<Player.getPlayerCount();i++){
     		IO.printLine(Player.getPlayer(i));
-    		String answer = IO.getLine("Do you wish to purchase a concession? Yes or No?");
+    		String answer = IO.getLine("Do you wish to bid for a concession? Yes or No?");
     		if (answer.toUpperCase().charAt(0)=='Y'){
     			double bid = IO.getDouble("Make your bid!");
-    			bids.add(bid);
+    			bids.add(i, bid);
     		}
     		else{
     			IO.putLine("Backed out of the bidding.");
     		}
+    		menu = 2;
     	}
-    	for(int i=0; i<Player.getPlayerCount();i++)
+		}
+    	
+    	while(menu == 2){
+    	for(int j=0; j<Player.getPlayerCount();j++)
     	{
-    		if(bids.get(i) > highestBid)
-    		highestBid = bids.get(i);
+    		if(bids.get(j) > highestBid)
+    		highestBid = bids.get(j);
+    		IO.putLine("Bid updated.");
     	}
-    	for(int i=0; i<Player.getPlayerCount();i++)
+    	for(int k=0; k<Player.getPlayerCount();k++)
     	{
-    		String answer = IO.getLine("The highest bid was " + highestBid + "Do you wish to continue the auction?");
+    		String answer = IO.getLine(Player.getPlayer(k) + ", The highest bid was " + highestBid + " Do you wish to continue the auction?");
     		if (answer.toUpperCase().charAt(0)!='Y')
     		{
-    			bids.set(i, (double) -1);
+    			bids.set(k, (double) -1);
     		}
     	}
+
+    	{
+        	for(int i=0; i<Player.getPlayerCount();i++){
+        		if(bids.get(i) !=1){
+        		IO.printLine(Player.getPlayer(i));
+        		String answer = IO.getLine("Do you wish to bid for a concession? Yes or No?");
+        		if (answer.toUpperCase().charAt(0)=='Y'){
+        			double bid = IO.getDouble("Make your bid!");
+        			bids.set(i, bid);
+        		}
+        		}
+        	}
+    	}
+    	}
+		}
+	}
+	}
+	public static void bidWar(Tile tile){
+		double[] bids = new double[Player.getPlayerCount()];
+		double highestBid = 0.0;
+		int bidders = bids.length;
+		Player highestBidder = null;
+		while(bidders > 1){
+			for(int i = 0; i<bids.length; i++){
+				if(bids[i]>=0){
+					if(highestBidder!=null){
+						IO.putLine("Highest Bidder: " + highestBidder);
+						IO.putLine("Highest bid is currently: " + highestBid);
+					}
+					if(Player.getPlayer(i)==highestBidder){
+						IO.printLine(Player.getPlayer(i));
+						if(IO.getLine("Do you want to bid?").toUpperCase().charAt(0)=='Y'){
+							double bid=IO.getDouble("Enter Bid amount: ");
+							if(Player.getPlayer(i).getCash()>=bid){
+								bids[i]=bid;
+								if(bid > highestBid){
+									highestBid = bid;
+									highestBidder = Player.getPlayer(i);
+								}
+							}
+							else{
+								IO.putLine("Insufficient Funds.");
+							}
+						}
+					else{
+						bids[i]=-1;
+						bidders--;
+					}
+					}
+				}
+			}
+		}
+		if(highestBidder!=null){
+			IO.putLine("Auction goes to: " + highestBidder + "!");
+			highestBidder.removeCash(highestBid);
+			highestBidder.addConcession(tile);
+			tile.purchase(highestBidder);
+		}
 	}
 }
+ 

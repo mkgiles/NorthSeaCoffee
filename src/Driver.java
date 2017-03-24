@@ -16,8 +16,18 @@ public class Driver {
 		driver.partyDeck = new Deck();
 		driver.weatherDeck = new Deck();
 		driver.barrelDeck = new Deck();
-		PartyCard.loadDeck(driver.barrelDeck);
+		PartyCard.loadDeck(driver.partyDeck);
+		WaterCard.loadDeck(driver.waterDeck);
+		SeasonCard.loadDeck(driver.weatherDeck);
+		BarrelCard.loadDeck(driver.barrelDeck);
+		driver.partyDeck.shuffle();
+		driver.waterDeck.shuffle();
+		driver.weatherDeck.shuffle();
+		driver.barrelDeck.shuffle();
 		IO.print(driver.barrelDeck);
+		IO.print(driver.waterDeck);
+		IO.print(driver.weatherDeck);
+		IO.print(driver.partyDeck);
 		driver.victoryState = false;
 		IO.putLine("Welcome to North Sea Oil");
 		Drill[] drills = new Drill[13];
@@ -93,10 +103,11 @@ public class Driver {
     	//PHASE 2
     	for(int i=0; i<Player.getPlayerCount();i++){
     		IO.printLine(Player.getPlayer(i));
-    		String answer = IO.getLine("Do you wish to purchase a concession? Yes or No?");
-    		if (answer != null && answer.toUpperCase().charAt(0)=='Y'){
-    			String coordinate = IO.getLine("Pick a concession to purchase");
+    		String answer = IO.getLine("Do you wish to call an auction for a concession? Yes or No?");
+    		if (answer.toUpperCase().charAt(0)=='Y'){
+    			String coordinate = IO.getLine("Pick a concession to auction for.");
     			map.purchase(Player.getPlayer(i), coordinate);
+    			//Bank.auction(1);
     		}
     		else{
     			IO.putLine("NO BUY!");
@@ -156,4 +167,4 @@ public class Driver {
     	IO.prompt("Press any key to continue to Phase 3");
     	//PHASE 3
     }
-}
+} 

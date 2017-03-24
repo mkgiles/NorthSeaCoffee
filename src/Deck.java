@@ -7,12 +7,13 @@ public class Deck {
 	private static int[] seed;
 	//use ISAAC for random number generation.
 	public static void deckInit(){
-		rand = new Rand();
 		seed = new int[256];
 		for(int i=0;i<256;i++){
-			seed[i]=(int) (Math.random()*(0xFFFFFFFF)); //seed ISAAC with clock values.
+			seed[i]=(int) (Math.random()*(0xFFFFFF)); //seed ISAAC with clock values.
 		}
+		rand = new Rand(seed);
 		rand.Init(true);
+		rand.Isaac();
 	}
 	Deck(){
 		deck = new ArrayList<Card>();
@@ -29,10 +30,11 @@ public class Deck {
 	public void shuffle() {
 	    int n = deck.size();
 	    while (n > 0) {
-	        int k = Math.abs(rand.val()%n--); //decrements after using the value
+	    	int r = Deck.rand.val();
+	        int k = Math.abs(r%n--); //decrements after using the value
 	        Card temp = deck.get(n);
+	        deck.add(deck.get(k));
 	        deck.remove(n);
-	        deck.add(n,deck.get(k));
 	        deck.remove(k);
 	        deck.add(k,temp);
 	    }
