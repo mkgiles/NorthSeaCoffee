@@ -21,6 +21,6 @@ abstract class Card {
 		
 	}
 	public String toString(){
-		return title + '|' + value; 
+		return title; 
 	}
 }

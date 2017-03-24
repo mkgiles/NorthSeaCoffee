@@ -18,7 +18,7 @@ public class WaterCard extends Card{
 	private static String [] reefs = {"No Oil", "Small Deposits. 20'000 Barrels", "Medium Deposits, 40'000 Barrels", "Large Deposits, 100'000 Barrels"};
 	private static String [] deepWater = {"No Oil", "Small Deposits. 20'000 Barrels", "Medium Deposits, 40'000 Barrels", "Large Deposits, 100'000 Barrels"};
 	public String toString(){
-		return title + '|' + back;
+		return title;
 	}
 }
 
