@@ -2,11 +2,11 @@
 public class WaterCard extends Card{
 	String back;
 	//To be subclass in the card class for type of tile cards.
-	WaterCard(String title, String back, Object value){
+	WaterCard(String title, String back, int value){
 		super(title, value);
 		this.back = back;
 	}
-	protected static Card[] cards = {new WaterCard("Shallow Water", "No Oil", null),new WaterCard("Shallow Water", "Small Deposits", 20000),new WaterCard("Shallow Water", "Medium Deposits", 40000),new WaterCard("Reefs", "No Oil", null),new WaterCard("Reefs", "Small Deposits", 20000),new WaterCard("Reefs", "Medium Deposits", 40000),new WaterCard("Reefs", "Large Deposits", 100000),new WaterCard("Deep Water", "Small Deposits", 20000),new WaterCard("Deep Water", "Medium Deposits", 40000),new WaterCard("Deep Water", "Large Deposits", 100000)};
+	protected static Card[] cards = {new WaterCard("Shallow Water", "No Oil", 0),new WaterCard("Shallow Water", "Small Deposits", 20000),new WaterCard("Shallow Water", "Medium Deposits", 40000),new WaterCard("Reefs", "No Oil", 0),new WaterCard("Reefs", "Small Deposits", 20000),new WaterCard("Reefs", "Medium Deposits", 40000),new WaterCard("Reefs", "Large Deposits", 100000),new WaterCard("Deep Water", "Small Deposits", 20000),new WaterCard("Deep Water", "Medium Deposits", 40000),new WaterCard("Deep Water", "Large Deposits", 100000)};
 	protected static void loadDeck(Deck deck){
 		 for(int i = 0; i<cards.length;i++){
 				deck.add(cards[i]);
