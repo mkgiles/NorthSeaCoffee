@@ -150,29 +150,36 @@ public class Bank {
 		while(bidders > 1){
 			for(int i = 0; i<bids.length; i++){
 				if(bids[i]>=0){
-					IO.printLine(Player.getPlayer(i));
-					IO.putLine("Highest bid is currently: " + highestBid);
-					if(IO.getLine("Do you want to bid?").toUpperCase().charAt(0)=='Y'){
-						double bid=IO.getDouble("Enter Bid amount: ");
-						if(Player.getPlayer(i).getCash()>bid){
-							bids[i]=bid;
-							if(bid > highestBid){
-								highestBid = bid;
-								highestBidder = Player.getPlayer(i);
+					if(highestBidder!=null){
+						IO.putLine("Highest Bidder: " + highestBidder);
+						IO.putLine("Highest bid is currently: " + highestBid);
+					}
+					if(Player.getPlayer(i)==highestBidder){
+						IO.printLine(Player.getPlayer(i));
+						if(IO.getLine("Do you want to bid?").toUpperCase().charAt(0)=='Y'){
+							double bid=IO.getDouble("Enter Bid amount: ");
+							if(Player.getPlayer(i).getCash()>=bid){
+								bids[i]=bid;
+								if(bid > highestBid){
+									highestBid = bid;
+									highestBidder = Player.getPlayer(i);
+								}
+							}
+							else{
+								IO.putLine("Insufficient Funds.");
 							}
 						}
-						else{
-							IO.putLine("Insufficient Funds.");
-						}
-					}
 					else{
 						bids[i]=-1;
 						bidders--;
+					}
 					}
 				}
 			}
 		}
 		if(highestBidder!=null){
+			IO.putLine("Auction goes to: " + highestBidder + "!");
+			highestBidder.removeCash(highestBid);
 			highestBidder.addConcession(tile);
 			tile.purchase(highestBidder);
 		}
