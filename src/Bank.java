@@ -150,11 +150,11 @@ public class Bank {
 		while(bidders > 1){
 			for(int i = 0; i<bids.length; i++){
 				if(bids[i]>=0){
-					if(highestBidder!=null){
-						IO.putLine("Highest Bidder: " + highestBidder);
-						IO.putLine("Highest bid is currently: " + highestBid);
-					}
 					if(Player.getPlayer(i)!=highestBidder){
+						if(highestBidder!=null){
+							IO.putLine("Highest Bidder: " + highestBidder);
+							IO.putLine("Highest bid is currently: " + highestBid);
+						}
 						IO.printLine(Player.getPlayer(i));
 						if(IO.getLine("Do you want to bid?").toUpperCase().charAt(0)=='Y'){
 							double bid=IO.getDouble("Enter Bid amount: ");
