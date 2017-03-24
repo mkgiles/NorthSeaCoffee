@@ -126,8 +126,10 @@ public class Driver {
 	    		IO.putLine("0)Light drill. ($100,000)");
 	    		IO.putLine("1)Heavy drill. ($250,000)");
 	    		IO.putLine("2)Special drill. ($500,000)");
+	    		IO.putLine("3)Go back to menu.");
 		    		type = IO.getInt("Pick a drill type to purchase");
 		    		drill = null;
+		    		if(type < 3 && type > -1){
 		    		for(int j = 0; j<Drill.drillList.length;j++){
 		    			if(Drill.drillList[j].getType() == type){
 		    				if(Drill.drillList[j].getOwner() == null){
@@ -138,13 +140,23 @@ public class Driver {
 		    				}
 		    			}
 		    		}
-		    		if(drill == null){
+		    		}
+		    		if(drill == null && type >-1 && type < 3){
 		    			IO.putLine("NO DRILLS LEFT!");
+		    		}
+		    		
+		    		if(drill == null && type > 2){
+		    			IO.putLine("Suit yourself.");
 		    		}
 		    		break;
 	    		case(4):
+		    		IO.putLine("0)Light drill. ($60,000)");
+		    		IO.putLine("1)Heavy drill. ($250,000)");
+		    		IO.putLine("2)Special drill. ($300,000)");
+		    		IO.putLine("3)Go back to menu.");
 		    		type = IO.getInt("Pick a drill type to sell");
 		    		drill = null;
+		    		if(type < 3 && type > -1){
 		    		for(int j = 0; j<player.getDrillCount();j++){
 		    			if(player.getDrill(j).getType() == type){
 		    				if(Drill.drillList[j].getTile() != null){
@@ -157,6 +169,7 @@ public class Driver {
 		    			else{
 		    				IO.putLine("No Drill of that type.");
 		    			}
+		    		}
 		    		}
 		    		break;
 	    		case(5):
