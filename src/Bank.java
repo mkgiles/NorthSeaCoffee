@@ -2,12 +2,13 @@ import java.util.ArrayList;
 
 public class Bank {
 
+	private static ArrayList<Player> winner;
 	static int borrowLimit = 4000000;
 	static int victoryGoal = 5000000;
 	int capitalRatesTax;
 	int revenueRatesTax;
 	int interestRate;
-	
+
 	//Can hopefully store financials for each player in the player class.
 	
 	
@@ -27,6 +28,7 @@ public class Bank {
 	
 	public static void bankPayment(Player player)
 	{	
+		IO.putLine("Your cash is " + player.getCash());
 		IO.putLine("Your debt is " + player.getDebt());
 
 		 int menu = 1;
@@ -50,6 +52,7 @@ public class Bank {
 	{
 		 int menu = 1;
 		 while (menu == 1){
+	    IO.putLine("Your cash is " + player.getCash());
 		IO.putLine("Your debt is " + player.getDebt());
 		IO.putLine("How much do you wish to borrow?");
 		int borrow=IO.getInt("500000 or 1000000?");
@@ -71,6 +74,7 @@ public class Bank {
 	
 	public static void playerStateCheck()
 	{
+		winner = new ArrayList<Player>();
     	for(int i=0; i<Player.getPlayerCount();i++){
     		Player player = Player.getPlayer(i);
     		if (player.getCash() <= 0 && player.getDebt() >= 4000000 && player.getConcessionsRemaining() == 7 && player.getDrillCount() == 0 )
@@ -81,68 +85,25 @@ public class Bank {
     		else{
     			if(player.getCash() >= victoryGoal && player.getDebt() == 0)
     			{
-    				Player.playerWinner(i);
+    				winner.add(Player.getPlayer(i));
+    				
+    				
+    				
     			}
+    			if(winner.contains(player)){
+    			playerWinner(winner.size());
+    		}
     		}
     	}
 	}
 	
-	//Unfinished
-	public static void auction(int menu){
-	{
-		while(menu !=5){
-		double highestBid = 0;
-		ArrayList<Double> bids = new ArrayList<Double>();
-
+	//Start of a victory check in Player. Will eventually determine winner between multiple winners
+	public static void playerWinner(int i) {
+		IO.putLine(Player.getPlayer(i) + "has won!");
 		
-		while(menu == 1){
-    	for(int i=0; i<Player.getPlayerCount();i++){
-    		IO.printLine(Player.getPlayer(i));
-    		String answer = IO.getLine("Do you wish to bid for a concession? Yes or No?");
-    		if (answer.toUpperCase().charAt(0)=='Y'){
-    			double bid = IO.getDouble("Make your bid!");
-    			bids.add(i, bid);
-    		}
-    		else{
-    			IO.putLine("Backed out of the bidding.");
-    		}
-    		menu = 2;
-    	}
-		}
-    	
-    	while(menu == 2){
-    	for(int j=0; j<Player.getPlayerCount();j++)
-    	{
-    		if(bids.get(j) > highestBid)
-    		highestBid = bids.get(j);
-    		IO.putLine("Bid updated.");
-    	}
-    	for(int k=0; k<Player.getPlayerCount();k++)
-    	{
-    		String answer = IO.getLine(Player.getPlayer(k) + ", The highest bid was " + highestBid + " Do you wish to continue the auction?");
-    		if (answer.toUpperCase().charAt(0)!='Y')
-    		{
-    			bids.set(k, (double) -1);
-    		}
-    	}
+	}
 
-    	{
-        	for(int i=0; i<Player.getPlayerCount();i++){
-        		if(bids.get(i) !=1){
-        		IO.printLine(Player.getPlayer(i));
-        		String answer = IO.getLine("Do you wish to bid for a concession? Yes or No?");
-        		if (answer.toUpperCase().charAt(0)=='Y'){
-        			double bid = IO.getDouble("Make your bid!");
-        			bids.set(i, bid);
-        		}
-        		}
-        	}
-    	}
-    	}
-		}
-	}
-	}
-	public static void bidWar(Tile tile){
+	public static void bidWar(Tile tile, Deck waterDeck){
 		double[] bids = new double[Player.getPlayerCount()];
 		double highestBid = 0.0;
 		int bidders = bids.length;
@@ -150,11 +111,11 @@ public class Bank {
 		while(bidders > 1){
 			for(int i = 0; i<bids.length; i++){
 				if(bids[i]>=0){
-					if(highestBidder!=null){
-						IO.putLine("Highest Bidder: " + highestBidder);
-						IO.putLine("Highest bid is currently: " + highestBid);
-					}
 					if(Player.getPlayer(i)!=highestBidder){
+						if(highestBidder!=null){
+							IO.putLine("Highest Bidder: " + highestBidder);
+							IO.putLine("Highest bid is currently: " + highestBid);
+						}
 						IO.printLine(Player.getPlayer(i));
 						if(IO.getLine("Do you want to bid?").toUpperCase().charAt(0)=='Y'){
 							double bid=IO.getDouble("Enter Bid amount: ");
@@ -182,6 +143,9 @@ public class Bank {
 			highestBidder.removeCash(highestBid);
 			highestBidder.addConcession(tile);
 			tile.purchase(highestBidder);
+			if(tile.getCard()==null){
+				tile.addCard((WaterCard)waterDeck.read());
+			}
 		}
 	}
 }

@@ -20,11 +20,18 @@ public class Map {
 			 }
 		 }
 	}
-	public void purchase(Player player, String coordinate){
+	public void peek(Player player, String coordinate, Deck deck){
+		if(tileMap.containsKey(coordinate)){
+			Tile tile = tileMap.get(coordinate);
+			player.removeCash(100000);
+			tile.addCard((WaterCard)deck.read());
+		}
+	}
+	public void purchase(Player player, String coordinate, Deck deck){
 		if(tileMap.containsKey(coordinate)){
 			Tile tile = tileMap.get(coordinate);
 			if(tile.getPlayer()==null && player.getConcessionsRemaining() > 0){
-				Bank.bidWar(tile);
+				Bank.bidWar(tile, deck);
 			}
 			else{
 				IO.putLine("Cannot process.");
@@ -40,6 +47,7 @@ public class Map {
 			Tile tile = tileMap.get(coordinate);
 			player.dropConcession(tile);
 			tile.sell(player);
+			player.addCash(tile.tilePrice());
 		}
 		else{
 			IO.putLine("NO SALE");

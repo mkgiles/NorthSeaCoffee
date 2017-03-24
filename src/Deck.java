@@ -20,7 +20,6 @@ public class Deck {
 	}
 	public Card read(){
 		Card card = deck.remove(0);
-		IO.print(card);
 		return card;
 	}
 	public void add(Card card){

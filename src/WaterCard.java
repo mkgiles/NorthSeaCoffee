@@ -1,6 +1,6 @@
 
 public class WaterCard extends Card{
-	String back;
+	public String back;
 	//To be subclass in the card class for type of tile cards.
 	WaterCard(String title, String back, int value){
 		super(title, value);
