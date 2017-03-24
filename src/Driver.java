@@ -11,7 +11,7 @@ public class Driver {
 		Driver driver = new Driver();
 		driver.map = new Map();
 		driver.maplog = IO.print(driver.map);
-		Deck.deckInit();
+		Deck.randInit();
 		driver.waterDeck = new Deck();
 		driver.partyDeck = new Deck();
 		driver.weatherDeck = new Deck();

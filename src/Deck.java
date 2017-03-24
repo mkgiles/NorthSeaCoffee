@@ -6,7 +6,7 @@ public class Deck {
 	private static Rand rand;
 	private static int[] seed;
 	//use ISAAC for random number generation.
-	public static void deckInit(){
+	public static void randInit(){
 		seed = new int[256];
 		for(int i=0;i<256;i++){
 			seed[i]=(int) (Math.random()*(0xFFFFFF)); //seed ISAAC with clock values.
