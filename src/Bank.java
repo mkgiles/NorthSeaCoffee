@@ -169,10 +169,10 @@ public class Bank {
 								IO.putLine("Insufficient Funds.");
 							}
 						}
-					else{
-						bids[i]=-1;
-						bidders--;
-					}
+						else{
+							bids[i]=-1;
+							bidders--;
+						}
 					}
 				}
 			}
