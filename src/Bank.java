@@ -7,7 +7,6 @@ public class Bank {
 	int capitalRatesTax;
 	int revenueRatesTax;
 	int interestRate;
-	
 	//Can hopefully store financials for each player in the player class.
 	
 	
@@ -144,7 +143,7 @@ public class Bank {
 		}
 	}
 	}
-	public static void bidWar(Tile tile){
+	public static void bidWar(Tile tile, Deck waterDeck){
 		double[] bids = new double[Player.getPlayerCount()];
 		double highestBid = 0.0;
 		int bidders = bids.length;
@@ -184,6 +183,9 @@ public class Bank {
 			highestBidder.removeCash(highestBid);
 			highestBidder.addConcession(tile);
 			tile.purchase(highestBidder);
+			if(tile.getCard()==null){
+				tile.addCard((WaterCard)waterDeck.read());
+			}
 		}
 	}
 }
