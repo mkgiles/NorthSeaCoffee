@@ -25,10 +25,8 @@ public class IO {
 	}
 	
 	public static double getDouble(String output){
-		System.out.println(output);
-		System.out.print(">");
-		double ans = scanner.nextDouble();
-		scanner.nextLine();
+		String input = JOptionPane.showInputDialog(null, output);
+		double ans = Double.parseDouble(input);
 		return ans;
 	}
 	public static void putLine(String output){

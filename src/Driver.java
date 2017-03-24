@@ -107,7 +107,8 @@ public class Driver {
     		IO.printLine(player);
     		int option = -1;
     		while(option != 0){
-    			IO.print(map);
+    			IO.delete(maplog);
+    			maplog = IO.print(map);
     			String coordinate = null;
     			int buyLimit = 0;
     			int testLimit = 0;
@@ -191,7 +192,7 @@ public class Driver {
 	    			String depth = addDrill.getCard().title;
 	    			for(int j=0; j<player.getDrillCount();j++){
 	    				Drill addingDrill = player.getDrill(j);
-	    				if((depth == "Shallow Water" && addingDrill.getType() == 0)||(depth == "Deep Water" && addingDrill.getType() == 1)||(depth == "Reef" && addingDrill.getType() == 2)){
+	    				if((depth == "Shallow Water" && addingDrill.getType() == 0)||(depth == "Deep Water" && addingDrill.getType() == 1)||(depth == "Reefs" && addingDrill.getType() == 2)){
 	    					addingDrill.place(addDrill);
 	    					addDrill.setDrill(addingDrill);
 	    					break;

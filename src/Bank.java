@@ -145,7 +145,7 @@ public class Bank {
 			tile.purchase(highestBidder);
 			if(tile.getCard()==null){
 				tile.addCard((WaterCard)waterDeck.read());
-				IO.print(tile.getCard().title + "|" + tile.getCard().back);
+				IO.printLine(tile.getCard().title + "|" + tile.getCard().back);
 			}
 		}
 	}

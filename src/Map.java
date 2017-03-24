@@ -25,7 +25,7 @@ public class Map {
 			Tile tile = tileMap.get(coordinate);
 			player.removeCash(100000);
 			tile.addCard((WaterCard)deck.read());
-			IO.print(tile.getCard().title + "|" + tile.getCard().back);
+			IO.printLine(tile.getCard().title + "|" + tile.getCard().back);
 		}
 	}
 	public void purchase(Player player, String coordinate, Deck deck){
