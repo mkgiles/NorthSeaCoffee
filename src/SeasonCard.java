@@ -17,6 +17,9 @@ public class SeasonCard extends Card{
 			deck.add(cards[i]);
 		}
 	}
+	public String getWeather(){
+		return "NW: " + weather[0] + " SW: " + weather[1] + " NE: " + weather[2] + " SE: " + weather[3];
+	}
 	//String arrays for seasons. Read from left to right as NW,SW,NE,SE
 	private String[][][] seasonProperties = {spring,summer,autumn,winter};
     /////////////////////////////////////////////////////////////////////	
