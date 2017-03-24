@@ -1,5 +1,5 @@
 public class Tile {
-	private Card card;
+	private WaterCard card;
 	private Player player;
 	private Drill drill;
 	Tile(){
@@ -19,7 +19,7 @@ public class Tile {
 	public String toString(){
 		return "Card: " + card + "\nPlayer: " + player + "\nDrill: " + drill;
 	}
-	public Card getCard(){
+	public WaterCard getCard(){
 		return card;
 	}
 	public Player getPlayer(){
@@ -40,10 +40,89 @@ public class Tile {
 	public void dropCard(){
 		this.card = null;
 	}
-	//Contains information about owner and drill
+	
+	public double tilePrice()
+	{
+	if(getCard().title == "Shallow Water")
+	{
+		if(getCard().back == "No Oil")
+		{
+			drill.sell();
+			double sellPrice = 0;
+			return sellPrice;
+		}
+		if(getCard().back == "Small Deposits")
+		{
+			drill.sell();
+			double sellPrice = 350000;
+			return sellPrice;
+		}
+		if(getCard().back == "Medium Deposits")
+		{
+			drill.sell();
+			double sellPrice = 750000;
+			return sellPrice;
+		}
+	}
+	if(getCard().title == "Reefs")
+	{
+		if(getCard().back == "No Oil")
+		{
+			drill.sell();
+			double sellPrice = 0;
+			return sellPrice;
+		}
+		if(getCard().back == "Small Deposits")
+		{
+			drill.sell();
+			double sellPrice = 250000;
+			return sellPrice;
+		}
+		if(getCard().back == "Medium Deposits")
+		{
+			drill.sell();
+			double sellPrice = 650000;
+			return sellPrice;
+		}
+		if(getCard().back == "Large Deposits")
+		{
+			drill.sell();
+			double sellPrice = 1850000;
+			return sellPrice;
+		}
+		if(getCard().title == "Deep Water")
+		{
+			if(getCard().back == "No Oil")
+			{
+				drill.sell();
+				double sellPrice = 0;
+				return sellPrice;
+			}
+			if(getCard().back == "Small Deposits")
+			{
+				drill.sell();
+				double sellPrice = 150000;
+				return sellPrice;
+			}
+			if(getCard().back == "Medium Deposits")
+			{
+				drill.sell();
+				double sellPrice = 500000;
+				return sellPrice;
+			}
+			if(getCard().back == "Large Deposits")
+			{
+				drill.sell();
+				double sellPrice = 1700000;
+				return sellPrice;
+			}
+	}
+	}
+	return 0;
 	
 
 	
 	
 	
 }
+	}

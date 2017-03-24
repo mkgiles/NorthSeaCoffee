@@ -1,7 +1,7 @@
 abstract class Card {
-	String title;
+	public String title;
 	//use enums to define card value, i.e. seasons, government in power, water depth. For barrel price this is simply the cost of a barrel
-	Object value;
+	public Object value;
 	//Superclass for Water, Political, Barrel Price, and Season cards.
 	Card(String title, Object value){
 		this.title = title;
