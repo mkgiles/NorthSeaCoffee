@@ -2,7 +2,9 @@ public class Driver {
 	
 	//Will be used to control the for loop as a victory will stop the loop from continuing
 	Deck waterDeck, partyDeck, weatherDeck, barrelDeck;
-	Card partyCard, weatherCard, barrelCard;
+	PartyCard partyCard;
+	SeasonCard weatherCard;
+	BarrelCard barrelCard;
 	Map map;
 	Boolean victoryState;
 	
@@ -23,10 +25,9 @@ public class Driver {
 		driver.waterDeck.shuffle();
 		driver.weatherDeck.shuffle();
 		driver.barrelDeck.shuffle();
-		IO.print(driver.barrelDeck);
-		IO.print(driver.waterDeck);
-		IO.print(driver.weatherDeck);
-		IO.print(driver.partyDeck);
+		driver.barrelCard = (BarrelCard) driver.barrelDeck.read();
+    	driver.weatherCard = (SeasonCard) driver.weatherDeck.read();
+    	driver.partyCard = (PartyCard) driver.partyDeck.read();
 		driver.victoryState = false;
 		IO.putLine("Welcome to North Sea Oil");
 		Drill[] drills = new Drill[13];
@@ -222,7 +223,15 @@ public class Driver {
     	}
     	IO.prompt("Press any key to continue to Phase 3");
     	//PHASE 3
-    
+    	barrelDeck.add(barrelCard);
+    	weatherDeck.add(weatherCard);
+    	partyDeck.add(partyCard);
+    	barrelCard = (BarrelCard) barrelDeck.read();
+    	weatherCard = (SeasonCard) weatherDeck.read();
+    	partyCard = (PartyCard) partyDeck.read();
+    	IO.putLine("Current Party:\n" + partyCard.title + "\nPolicies:\nCapital Tax | Revenue Tax | Interest\n " + partyCard.value + "\n_______________________");
+    	IO.putLine("Weather Forecast: \n" + "Season: \n" + weatherCard.title + "\nWeather: \n" + weatherCard.getWeather() + "\n_______________________");
+    	IO.putLine("Cost per barrel of Oil: $" + barrelCard.value);
     	
     	//LAST METHOD
     for(int i=0; i<Player.getPlayerCount();i++)
