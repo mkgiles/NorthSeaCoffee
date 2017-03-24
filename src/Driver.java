@@ -112,7 +112,7 @@ public class Driver {
     			int testLimit = 0;
     			int type = -1;
     			Drill drill = null;
-	        	option = IO.getInt("Pick an option:\n 1: Bid on a concession\n 2: Sell a concession\n 3: Purchase a drill\n 4: Sell a drill\n 5: Test a concession site\n 0: End turn");
+	        	option = IO.getInt("Pick an option:\n 1: Bid on a concession\n 2: Sell a concession\n 3: Purchase a drill\n 4: Sell a drill\n 5: Test a concession site\n 6: Place a Drill\n 7: Displace a Drill\n 8: Transfer a Drill 0: End turn");
 	    		switch(option){
 	    		case(1):
 	    			if(buyLimit < 3){
@@ -182,16 +182,44 @@ public class Driver {
 	    			coordinate = IO.getLine("Pick a concession to test");
 	    			map.peek(player, coordinate,waterDeck);
 	    			testLimit = testLimit + 1;
-	    			break;
 	    			}
+	    			break;
+	    		case(6):
+	    			coordinate = IO.getLine("Pick a concession to add a drill to");
+	    			Tile addDrill = map.tileMap.get(coordinate);
+	    			String depth = addDrill.getCard().title;
+	    			for(int j=0; j<player.getDrillCount();j++){
+	    				Drill addingDrill = player.getDrill(j);
+	    				if((depth == "Shallow Water" && addingDrill.getType() == 0)||(depth == "Deep Water" && addingDrill.getType() == 1)||(depth == "Reef" && addingDrill.getType() == 2)){
+	    					addingDrill.place(addDrill);
+	    					addDrill.setDrill(addingDrill);
+	    					break;
+	    				}
+	    			}
+	    			break;
+	    		case(7):
+	    			coordinate = IO.getLine("Pick a concession to remove a drill from");
+	    			Tile removeDrill = map.tileMap.get(coordinate);
+	    			removeDrill.getDrill().displace();
+	    			removeDrill.dropDrill();
+	    			break;
+	    		case(8):
+	    			coordinate = IO.getLine("Pick a concession to transfer from");
+	    			Tile fromConc = map.tileMap.get(coordinate);
+	    			coordinate = IO.getLine("Pick a concession to transfer to");
+	    			Tile toConc = map.tileMap.get(coordinate);
+	    			fromConc.getDrill().place(toConc);
+	    			toConc.setDrill(fromConc.getDrill());
+	    			fromConc.dropDrill();
+	    			break;
 	    		case(0):
 	    			break;
 	    		default:
 	    			IO.putLine("Invalid option");
 	    			break;
+	    		}
     		}
     	}
-    }
     	IO.prompt("Press any key to continue to Phase 3");
     	//PHASE 3
     
