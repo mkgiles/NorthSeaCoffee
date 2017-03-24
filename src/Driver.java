@@ -236,7 +236,22 @@ public class Driver {
     	//LAST METHOD
     for(int i=0; i<Player.getPlayerCount();i++)
     {
-     Bank.playerStateCheck();
+    	Player.getPlayer(i).addDebt(Player.getPlayer(i).getRevenueTaxable()*partyCard.revenue*.01);
+    	Player.getPlayer(i).addDebt(Player.getPlayer(i).getCapitalTaxable()*partyCard.capital*.01);
+    	Player.getPlayer(i).addDebt(Player.getPlayer(i).getDebt()*partyCard.interest*.01);
     }
+    for(int i=0; i<Player.getPlayerCount();i++){
+    	IO.putLine(Player.getPlayer(i) + ",");
+	String answer = IO.getLine("Do you wish to repay debt? Yes or No?");
+	if (answer.toUpperCase().charAt(0)=='Y'){
+	Bank.bankPayment(Player.getPlayer(i));
+	}
+	else
+	{
+		IO.putLine("No payment made.");
+	}
+    }
+    
+    Bank.playerStateCheck();
 }
 }

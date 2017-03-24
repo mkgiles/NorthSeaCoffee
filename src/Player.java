@@ -8,6 +8,8 @@ public class Player {
 	private double cash;
 	private double debt;
 	private ArrayList<Drill> drills;
+	private double revenueTaxable;
+	private double capitalTaxable;
 	public static void addPlayers(int playerAmount)
 	{
 		playerList = new ArrayList<Player>();
@@ -47,20 +49,31 @@ public class Player {
 	public static Player getPlayer(int i){
 		return playerList.get(i);
 	}
+	
+	public double getRevenueTaxable(){
+		return revenueTaxable;
+	}
+	
+	public double getCapitalTaxable(){
+		return capitalTaxable;
+	}
+	
 	public double addLoan(double amount){
-		addCash(amount);
+		this.cash += amount;
 		return this.debt = debt + amount;
 	}
 	//Adds cash to player
 	public void addCash(double addCash)
 	{
 		this.cash = cash + addCash;
+		revenueTaxable += addCash;
 	}
 	
 	//Removes cash from player
 	public void removeCash(double removeCash)
 	{
 		this.cash = cash - removeCash;
+		capitalTaxable += removeCash;
 	}
 	
 	//Gets cash
@@ -76,6 +89,10 @@ public class Player {
 	//Pays debt
 	public void payDebt(double payment){
 		this.debt = debt-payment;
+	}
+	
+	public void addDebt(double debt){
+		this.debt += debt;
 	}
 	
 	public int getDrillCount(){
