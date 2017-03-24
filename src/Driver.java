@@ -84,12 +84,10 @@ public class Driver {
     		{
     			IO.putLine("Nothing borrowed.");
     		}
-    	}
+    		answer = null;
     	//Paying	
     	//Generates error upon selecting NULL for Yes/No answer.
-    	for(int i=0; i<Player.getPlayerCount();i++){
-    		IO.printLine(Player.getPlayer(i));
-    		String answer = IO.getLine("Do you wish to repay debt? Yes or No?");
+    		answer = IO.getLine("Do you wish to repay debt? Yes or No?");
     		if (answer.toUpperCase().charAt(0)=='Y'){
     		Bank.bankPayment(Player.getPlayer(i));
     		}
@@ -105,68 +103,67 @@ public class Driver {
     	//PHASE 2
     	IO.printLine(map);
     	for(int i=0; i<Player.getPlayerCount();i++){
-    		IO.printLine(Player.getPlayer(i));
-    		String answer = IO.getLine("Do you wish to call an auction for a concession? Yes or No?");
-    		if (answer.toUpperCase().charAt(0)=='Y'){
-    			String coordinate = IO.getLine("Pick a concession to auction for.");
-    			map.purchase(Player.getPlayer(i), coordinate);
-    			//Bank.auction(1);
-    		}
-    		else{
-    			IO.putLine("NO BUY!");
-    		}
-    		answer = IO.getLine("Do you wish to sell a concession? Yes or No?");
-    		if (answer.toUpperCase().charAt(0)=='Y'){
-    			String coordinate = IO.getLine("Pick a concession to sell");
-    			map.sell(Player.getPlayer(i), coordinate);
-    		}
-    		else{
-    			IO.putLine("NO SELL!");
-    		}
-    		IO.printLine(Player.getPlayer(i));
-    		answer = IO.getLine("Do you wish to purchase a drill? Yes or No?");
-    		if (answer.toUpperCase().charAt(0)=='Y'){
-    			int type = IO.getInt("Pick a drill type to purchase");
+    		Player player = Player.getPlayer(i);
+    		IO.printLine(player);
+    		int option = -1;
+    		while(option != 0){
+    			String coordinate = null;
+    			int type = -1;
     			Drill drill = null;
-    			for(int j = 0; j<Drill.drillList.length;j++){
-    				if(Drill.drillList[j].getType() == type){
-    					if(Drill.drillList[j].getOwner() == null){
-    						drill=Drill.drillList[j];
-    						drill.purchase(Player.getPlayer(i));
-    						Player.getPlayer(i).buyDrill(drill);
-    						break;
-    					}
-    				}
-    			}
-    			if(drill == null){
-    				IO.putLine("NO DRILLS LEFT!");
-    			}
-    		}
-    		else{
-    			IO.putLine("NO BUY!");
-    		}
-    		answer = null;
-    		answer = IO.getLine("Do you wish to sell a drill? Yes or No?");
-    		if (answer.toUpperCase().charAt(0)=='Y'){
-    			int type = IO.getInt("Pick a drill type to sell");
-    			Drill drill = null;
-    			Player player = Player.getPlayer(i);
-    			for(int j = 0; j<player.getDrillCount();j++){
-    				if(player.getDrill(j).getType() == type){
-    					if(Drill.drillList[j].getTile() != null){
-    						drill=Drill.drillList[j];
-    						drill.sell();
-    						player.sellDrill(drill);
-    						break;
-    					}
-    				}
-    			}
-    		}
-    		else{
-    			IO.putLine("NO SELL!");
+	        	option = IO.getInt("Pick an option:\n 1: Bid on a concession\n 2: Sell a concession\n 3: Purchase a drill\n 4: Sell a drill\n 0: End turn");
+	    		switch(option){
+	    		case(1):
+		    		coordinate = IO.getLine("Pick a concession to auction for.");
+		    		map.purchase(player, coordinate);
+		    		//Bank.auction(1);
+		    		break;
+	    		case(2):
+		    		coordinate = IO.getLine("Pick a concession to sell");
+		    		map.sell(player, coordinate);
+		    		break;
+	    		case(3):
+		    		type = IO.getInt("Pick a drill type to purchase");
+		    		drill = null;
+		    		for(int j = 0; j<Drill.drillList.length;j++){
+		    			if(Drill.drillList[j].getType() == type){
+		    				if(Drill.drillList[j].getOwner() == null){
+		    					drill=Drill.drillList[j];
+		    					drill.purchase(player);
+		    					player.buyDrill(drill);
+		    					break;
+		    				}
+		    			}
+		    		}
+		    		if(drill == null){
+		    			IO.putLine("NO DRILLS LEFT!");
+		    		}
+		    		break;
+	    		case(4):
+		    		type = IO.getInt("Pick a drill type to sell");
+		    		drill = null;
+		    		for(int j = 0; j<player.getDrillCount();j++){
+		    			if(player.getDrill(j).getType() == type){
+		    				if(Drill.drillList[j].getTile() != null){
+		    					drill=Drill.drillList[j];
+		    					drill.sell();
+		    					player.sellDrill(drill);
+		    					break;
+		    				}
+		    			}
+		    			else{
+		    				IO.putLine("No Drill of that type.");
+		    			}
+		    		}
+		    		break;
+	    		case(0):
+	    			break;
+	    		default:
+	    			IO.putLine("Invalid option");
+	    			break;
     		}
     	}
+    }
     	IO.prompt("Press any key to continue to Phase 3");
     	//PHASE 3
-    }
-} 
+}
+}
