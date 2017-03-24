@@ -122,6 +122,10 @@ public class Driver {
 		    		map.sell(player, coordinate);
 		    		break;
 	    		case(3):
+	    			IO.putLine("Your cash is " + player.getCash());
+	    		IO.putLine("0)Light drill. ($100,000)");
+	    		IO.putLine("1)Heavy drill. ($250,000)");
+	    		IO.putLine("2)Special drill. ($500,000)");
 		    		type = IO.getInt("Pick a drill type to purchase");
 		    		drill = null;
 		    		for(int j = 0; j<Drill.drillList.length;j++){

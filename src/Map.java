@@ -40,6 +40,7 @@ public class Map {
 			Tile tile = tileMap.get(coordinate);
 			player.dropConcession(tile);
 			tile.sell(player);
+			player.addCash(tile.tilePrice());
 		}
 		else{
 			IO.putLine("NO SALE");

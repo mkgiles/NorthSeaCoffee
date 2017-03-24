@@ -27,6 +27,7 @@ public class Bank {
 	
 	public static void bankPayment(Player player)
 	{	
+		IO.putLine("Your cash is " + player.getCash());
 		IO.putLine("Your debt is " + player.getDebt());
 
 		 int menu = 1;
@@ -50,6 +51,7 @@ public class Bank {
 	{
 		 int menu = 1;
 		 while (menu == 1){
+	    IO.putLine("Your cash is " + player.getCash());
 		IO.putLine("Your debt is " + player.getDebt());
 		IO.putLine("How much do you wish to borrow?");
 		int borrow=IO.getInt("500000 or 1000000?");

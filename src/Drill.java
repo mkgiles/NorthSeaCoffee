@@ -16,7 +16,7 @@ public class Drill {
 	}
 	public void purchase(Player owner){
 		this.owner = owner;
-		owner.addCash(drillGetCosts[this.getType()]);
+		owner.removeCash(drillGetCosts[this.getType()]);
 	}
 	public void sell(){
 		this.owner = null;
@@ -27,7 +27,16 @@ public class Drill {
 	}
 	public void displace(){
 		this.tile = null;
+		
 	}
+	
+	public void transfer(Tile tile)
+	{
+		displace();
+		place(tile);
+		owner.removeCash(20000);
+	}
+	
 	public int getType(){
 		return this.type.ordinal();
 	}
