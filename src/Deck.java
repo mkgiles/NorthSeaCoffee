@@ -10,7 +10,6 @@ public class Deck {
 		seed = new int[256];
 		for(int i=0;i<256;i++){
 			seed[i]=(int) (Math.random()*(0xFFFFFF)); //seed ISAAC with clock values.
-			IO.putLine(""+seed[i]);
 		}
 		rand = new Rand(seed);
 		rand.Init(true);
@@ -32,10 +31,7 @@ public class Deck {
 	    int n = deck.size();
 	    while (n > 0) {
 	    	int r = Deck.rand.val();
-	    	IO.putLine("Shuffle");
-	    	IO.putLine("" + r);
 	        int k = Math.abs(r%n--); //decrements after using the value
-	        IO.putLine(""+k);
 	        Card temp = deck.get(n);
 	        deck.add(deck.get(k));
 	        deck.remove(n);
