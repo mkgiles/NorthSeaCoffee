@@ -110,11 +110,11 @@ public class Driver {
     			String coordinate = null;
     			int type = -1;
     			Drill drill = null;
-	        	option = IO.getInt("Pick an option:\n 1: Bid on a concession\n 2: Sell a concession\n 3: Purchase a drill\n 4: Sell a drill\n 0: End turn");
+	        	option = IO.getInt("Pick an option:\n 1: Bid on a concession\n 2: Sell a concession\n 3: Purchase a drill\n 4: Sell a drill\n 5: Test a concession site\n 0: End turn");
 	    		switch(option){
 	    		case(1):
 		    		coordinate = IO.getLine("Pick a concession to auction for.");
-		    		map.purchase(player, coordinate);
+		    		map.purchase(player, coordinate, waterDeck);
 		    		//Bank.auction(1);
 		    		break;
 	    		case(2):
@@ -159,6 +159,10 @@ public class Driver {
 		    			}
 		    		}
 		    		break;
+	    		case(5):
+	    			coordinate = IO.getLine("Pick a concession to test");
+	    			map.peek(player, coordinate,waterDeck);
+	    			break;
 	    		case(0):
 	    			break;
 	    		default:
