@@ -95,9 +95,5 @@ public class Player {
 		
 	}
 	
-	//Start of a victory check in Player. Will eventually determine winner between multiple winners
-	public static void playerWinner(int i) {
-		IO.putLine(Player.getPlayer(i) + "has won!");
-		
-	}
+
 }
